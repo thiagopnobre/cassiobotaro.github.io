@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>import None</title><link href="/" rel="alternate"></link><link href="/feeds/cassio-botaro.atom.xml" rel="self"></link><id>/</id><updated>2015-03-01T00:00:00-03:00</updated><entry><title>Hello Python!</title><link href="/hello-python.html" rel="alternate"></link><updated>2015-03-01T00:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:,2015-03-01:hello-python.html</id><summary type="html">&lt;p&gt;&lt;img alt="logo-python" src="../images/logopython2.png" title="Logo Python" /&gt;&lt;/p&gt;
+&lt;h1&gt;FAQ&lt;/h1&gt;
+&lt;p&gt;Como algumas perguntas são recorrentes nas listas de discussões, nos grupos do facebook e outros meios de comunicação e nossa comunidade gosta de receber bem os iniciantes, responderei aqui aquelas dúvidas que são constantes.&lt;/p&gt;
+&lt;h2&gt;Python roda no (coloque aqui sua plataforma) ?&lt;/h2&gt;
+&lt;p&gt;Sim. Atualmente usuários linux, windows,MAC e de &lt;a href="https://www.python.org/download/other/"&gt;outras plataformas&lt;/a&gt;  podem programar nesta linguagem. O mesmo código pode ser rodado em diferentes plataformas, embora em &lt;em&gt;casos específicos&lt;/em&gt; não funcione. &lt;/p&gt;
+&lt;h2&gt;Alguma empresa grande utiliza?&lt;/h2&gt;
+&lt;p&gt;Aqui uma lista de algumas que talvez você nem sabia que utilizava, algumas com links interessantes de como e onde o python é utilizado.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://highscalability.com/blog/2011/3/14/6-lessons-from-dropbox-one-million-files-saved-every-15-minu.html"&gt;Dropbox&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.python.org/about/success/ilm/"&gt;Industrial light and magic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://labs.spotify.com/2013/03/20/how-we-use-python-at-spotify/"&gt;Spotify&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.mozilla.org/pt-BR/docs/Python#Use_of_Python_at_Mozilla"&gt;Mozilla&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://web.archive.org/web/19990204033714/http://google.stanford.edu/about.html"&gt;Google&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;E no Brasil?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.brasil.gov.br/"&gt;Governo Brasileiro(diversos portais)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://luizalabs.com/"&gt;Luizalabs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.uai.com.br/"&gt;Portal UAI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.globo.com/"&gt;Globo.com(diversos portais)&lt;/a&gt;
+e muitos outros...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Mais casos de sucesso podem ser vistos &lt;a href="https://www.python.org/about/success/"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Mas eu trabalho com (coloque aqui sua área de atuação), consigo trabalhar em Python?&lt;/h2&gt;
+&lt;p&gt;Busque no google ou na lista de discussão que deve ter alguém quejá mexeu nesta área ou está mexendo. Área científica, games, web e até mesmo como linguagem de cola, ou seja, linguagem para interligar sistemas de linguagens diferentes.
+Python atende a diversos nichos e várias bibliotecas estão disponíveis para te ajudar a não reinventar a roda.
+Mas nem tudo dá pra fazer com Python, e o mesmo é valido para toda linguagem, logo deixo o recado, uma pessoa que só tem um martelo, para ela, todo parafuso é prego.&lt;/p&gt;
+&lt;h2&gt;Python 2 ou 3?&lt;/h2&gt;
+&lt;p&gt;Está começando na linguagem? Python 3.
+Está iniciando projeto? Python 3, a não ser que logo de cara tenha alguma dependência de biblioteca que ainda não dá suporte. Sistema ja roda, caso não tenha impacto($$ e tempo), porte para python 3.
+Se não está preso a nenhuma dependência utilize python 3 e seja feliz!
+Está na duvida, verifique &lt;a href="https://caniusepython3.com/"&gt;aqui&lt;/a&gt;. &lt;/p&gt;
+&lt;h2&gt;Por onde começo?&lt;/h2&gt;
+&lt;p&gt;Definitivamente o melhor lugar para começar é se juntar a horda de zumbis do profossor Masanori, que tem uma didática incrível e mostra muitos exemplos práticos e divertidos.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://pycursos.com/python-para-zumbis/"&gt;Python para zombies&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="python-para-zumbis" src="../images/zumbi.jpg" title="Python para zumbis" /&gt;&lt;/p&gt;
+&lt;p&gt;Um outro lugar bom pra começar é o site do &lt;a href="https://twitter.com/erichideki"&gt;japa&lt;/a&gt; que teve o trabalho de reunir todo um material pra iniciantes e vai ganhar uma estrelinha por isto. Quando for no site dele, leia os outros posts, que ele tem vários compilados interessantes.&lt;/p&gt;
+&lt;p&gt;Alguns links interessantes:&lt;/p&gt;
+&lt;p&gt;https://ericstk.wordpress.com/2015/02/16/guia-para-iniciantes-a-programacao-em-python/&lt;/p&gt;
+&lt;p&gt;https://ericstk.wordpress.com/2013/02/15/quais-sao-as-melhores-formas-para-aprender-python-ides-referencias-e-dicas/&lt;/p&gt;
+&lt;p&gt;https://ericstk.wordpress.com/2013/01/02/onde-encontrar-respostas-para-suas-duvidas-em-python/&lt;/p&gt;
+&lt;h2&gt;Qual ide utilizar?&lt;/h2&gt;
+&lt;p&gt;A que melhor te atender e te tornar produtivo. Experimente várias e não caia no conto que xxx é melhor porque fulano utiliza ela. Quando se sentir confortável e produtivo, personalize sua ide ou editor de texto.
+Não listarei ide's o post do japa tem lá um monte, mas sim algumas customizações:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/cassiobotaro/my_environment"&gt;Sublime text&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://vim-bootstrap.com/"&gt;VIM&lt;/a&gt; &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Qual a maior feature do python?&lt;/h2&gt;
+&lt;p&gt;A comunidade. A diversidade de perfis que encontramos na comunidade é sem dúvida sua maior qualidade. A prontidão e paciência em atender e ajudar dos mais veteranos é incrivel. Nenhum perfil é descriminado e todos são sempre bem acolhidos.&lt;/p&gt;
+&lt;h2&gt;Python não serve para projeto grande?&lt;/h2&gt;
+&lt;p&gt;Uma das grandes questões que normalmente levantam é que outras linguagens são muito mais burocráticas e organizadas do que Python e para projetos maiores a linguagem não atende.Em respeito a isso o que tenho a dizer que organização e arquitetura de software tem muito mais haver com pessoas e como elas organizam o processo e ou contrução do que com a linguagem.Um projeto grande sim pode ser feito com python porém o projeto não tende a crescer tanto como outras linguagens, pois afinal não é tão verbosa.&lt;/p&gt;
+&lt;h2&gt;Python é lento?&lt;/h2&gt;
+&lt;p&gt;Infelizmente a linguagem não é tão performática e em alguns casos pode ser considerada lenta. Uma dica é tentar utilizar ao máximo os &lt;em&gt;builtins&lt;/em&gt; da linguagem pois são otimizados e experimente outros interpretadores como &lt;a href="http://pypy.org/"&gt;pypy&lt;/a&gt;. Mas lembre-se sempre "otimização prematura é a raiz de todo o mal." --Donald Knuth&lt;/p&gt;
+&lt;h2&gt;Dicas finais&lt;/h2&gt;
+&lt;p&gt;Os comandos dir e help do python são como "por favor" e "obrigado", uma pessoa que os conhece passa a ser diferente. 
+O comando help funciona com com &lt;em&gt;statements&lt;/em&gt; do python, como if, while, for.
+Por exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;        &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;if&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Outra dica é preparar e isolar seu ambiente de trabalho em um projeto, mas como fazer isto ficará para outro post.&lt;/p&gt;
+&lt;p&gt;Caso seja um iniciante lendo este post, bem vindo a comunidade e conte comigo com o que eu puder te ajudar.&lt;/p&gt;
+&lt;p&gt;Espero que tenha contribuído com vocês e meu ultimo recado é:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="learn-python" src="../images/keep-calm-and-learn-python.png" title="Keep calm and learn Python" /&gt;&lt;/p&gt;</summary><category term="python"></category><category term="python3"></category><category term="iniciantes"></category></entry></feed>
