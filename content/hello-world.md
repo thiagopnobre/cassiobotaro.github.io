@@ -62,11 +62,11 @@ Um outro lugar bom pra começar é o site do [japa](https://twitter.com/erichide
 
 Alguns links interessantes:
 
-https://ericstk.wordpress.com/2015/02/16/guia-para-iniciantes-a-programacao-em-python/
+[Guia para iniciantes python](https://ericstk.wordpress.com/2015/02/16/guia-para-iniciantes-a-programacao-em-python/)
 
-https://ericstk.wordpress.com/2013/02/15/quais-sao-as-melhores-formas-para-aprender-python-ides-referencias-e-dicas/
+[Melhores formas para aprender](https://ericstk.wordpress.com/2013/02/15/quais-sao-as-melhores-formas-para-aprender-python-ides-referencias-e-dicas/)
 
-https://ericstk.wordpress.com/2013/01/02/onde-encontrar-respostas-para-suas-duvidas-em-python/
+[Onde encontrar respostas para suas dúvidas](https://ericstk.wordpress.com/2013/01/02/onde-encontrar-respostas-para-suas-duvidas-em-python/)
 
 
 
@@ -98,7 +98,7 @@ O comando help funciona com com *statements* do python, como if, while, for.
 Por exemplo:
 
 ```python 
-        >>>help('if')
+        >>> help('if')
 ```
 
 
