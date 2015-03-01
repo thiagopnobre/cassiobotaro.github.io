@@ -37,9 +37,9 @@ Está na duvida, verifique &lt;a href="https://caniusepython3.com/"&gt;aqui&lt;/
 &lt;p&gt;&lt;img alt="python-para-zumbis" src="../images/zumbi.jpg" title="Python para zumbis" /&gt;&lt;/p&gt;
 &lt;p&gt;Um outro lugar bom pra começar é o site do &lt;a href="https://twitter.com/erichideki"&gt;japa&lt;/a&gt; que teve o trabalho de reunir todo um material pra iniciantes e vai ganhar uma estrelinha por isto. Quando for no site dele, leia os outros posts, que ele tem vários compilados interessantes.&lt;/p&gt;
 &lt;p&gt;Alguns links interessantes:&lt;/p&gt;
-&lt;p&gt;https://ericstk.wordpress.com/2015/02/16/guia-para-iniciantes-a-programacao-em-python/&lt;/p&gt;
-&lt;p&gt;https://ericstk.wordpress.com/2013/02/15/quais-sao-as-melhores-formas-para-aprender-python-ides-referencias-e-dicas/&lt;/p&gt;
-&lt;p&gt;https://ericstk.wordpress.com/2013/01/02/onde-encontrar-respostas-para-suas-duvidas-em-python/&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ericstk.wordpress.com/2015/02/16/guia-para-iniciantes-a-programacao-em-python/"&gt;Guia para iniciantes python&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ericstk.wordpress.com/2013/02/15/quais-sao-as-melhores-formas-para-aprender-python-ides-referencias-e-dicas/"&gt;Melhores formas para aprender&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ericstk.wordpress.com/2013/01/02/onde-encontrar-respostas-para-suas-duvidas-em-python/"&gt;Onde encontrar respostas para suas dúvidas&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Qual ide utilizar?&lt;/h2&gt;
 &lt;p&gt;A que melhor te atender e te tornar produtivo. Experimente várias e não caia no conto que xxx é melhor porque fulano utiliza ela. Quando se sentir confortável e produtivo, personalize sua ide ou editor de texto.
 Não listarei ide's o post do japa tem lá um monte, mas sim algumas customizações:&lt;/p&gt;
@@ -61,7 +61,7 @@ Não listarei ide's o post do japa tem lá um monte, mas sim algumas customizaç
 &lt;p&gt;Os comandos dir e help do python são como "por favor" e "obrigado", uma pessoa que os conhece passa a ser diferente. 
 O comando help funciona com com &lt;em&gt;statements&lt;/em&gt; do python, como if, while, for.
 Por exemplo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;        &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;if&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;        &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;if&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
