@@ -49,7 +49,7 @@ DEFAULT_PAGINATION = 10
 ADDTHIS_PROFILE = 'ra-54023148366c6bdd'
 GITHUB_SKIP_FORK = True
 GITHUB_SHOW_USER_LINK = True
-BOOTSTRAP_THEME = 'superhero'
+BOOTSTRAP_THEME = 'flatly'
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
