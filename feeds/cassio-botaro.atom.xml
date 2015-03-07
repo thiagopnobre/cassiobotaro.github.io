@@ -3,7 +3,7 @@
 &lt;h1&gt;FAQ&lt;/h1&gt;
 &lt;p&gt;Como algumas perguntas são recorrentes nas listas de discussões, nos grupos do facebook e outros meios de comunicação e nossa comunidade gosta de receber bem os iniciantes, responderei aqui aquelas dúvidas que são constantes.&lt;/p&gt;
 &lt;h2&gt;Python roda no (coloque aqui sua plataforma) ?&lt;/h2&gt;
-&lt;p&gt;Sim. Atualmente usuários linux, windows,MAC e de &lt;a href="https://www.python.org/download/other/"&gt;outras plataformas&lt;/a&gt;  podem programar nesta linguagem. O mesmo código pode ser rodado em diferentes plataformas, embora em &lt;em&gt;casos específicos&lt;/em&gt; não funcione. &lt;/p&gt;
+&lt;p&gt;Sim. Atualmente usuários linux, windows, MAC e de &lt;a href="https://www.python.org/download/other/"&gt;outras plataformas&lt;/a&gt;  podem programar nesta linguagem. O mesmo código pode ser rodado em diferentes plataformas, embora em &lt;em&gt;casos específicos&lt;/em&gt; não funcione. &lt;/p&gt;
 &lt;h2&gt;Alguma empresa grande utiliza?&lt;/h2&gt;
 &lt;p&gt;Aqui uma lista de algumas que talvez você nem sabia que utilizava, algumas com links interessantes de como e onde o python é utilizado.&lt;/p&gt;
 &lt;ul&gt;
@@ -23,7 +23,7 @@ e muitos outros...&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Mais casos de sucesso podem ser vistos &lt;a href="https://www.python.org/about/success/"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Mas eu trabalho com (coloque aqui sua área de atuação), consigo trabalhar em Python?&lt;/h2&gt;
-&lt;p&gt;Busque no google ou na lista de discussão que deve ter alguém quejá mexeu nesta área ou está mexendo. Área científica, games, web e até mesmo como linguagem de cola, ou seja, linguagem para interligar sistemas de linguagens diferentes.
+&lt;p&gt;Busque no google ou na lista de discussão que deve ter alguém que já mexeu nesta área ou está mexendo. Área científica, games, web e até mesmo como linguagem de cola, ou seja, linguagem para interligar sistemas de linguagens diferentes.
 Python atende a diversos nichos e várias bibliotecas estão disponíveis para te ajudar a não reinventar a roda.
 Mas nem tudo dá pra fazer com Python, e o mesmo é valido para toda linguagem, logo deixo o recado, uma pessoa que só tem um martelo, para ela, todo parafuso é prego.&lt;/p&gt;
 &lt;h2&gt;Python 2 ou 3?&lt;/h2&gt;
