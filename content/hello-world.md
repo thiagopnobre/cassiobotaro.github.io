@@ -14,7 +14,7 @@ Como algumas perguntas são recorrentes nas listas de discussões, nos grupos do
 
 ##Python roda no (coloque aqui sua plataforma) ?
 
-Sim. Atualmente usuários linux, windows,MAC e de [outras plataformas](https://www.python.org/download/other/)  podem programar nesta linguagem. O mesmo código pode ser rodado em diferentes plataformas, embora em *casos específicos* não funcione. 
+Sim. Atualmente usuários linux, windows, MAC e de [outras plataformas](https://www.python.org/download/other/)  podem programar nesta linguagem. O mesmo código pode ser rodado em diferentes plataformas, embora em *casos específicos* não funcione. 
 
 ##Alguma empresa grande utiliza?
 
@@ -38,7 +38,7 @@ Mais casos de sucesso podem ser vistos [aqui](https://www.python.org/about/succe
 
 ##Mas eu trabalho com (coloque aqui sua área de atuação), consigo trabalhar em Python?
 
-Busque no google ou na lista de discussão que deve ter alguém quejá mexeu nesta área ou está mexendo. Área científica, games, web e até mesmo como linguagem de cola, ou seja, linguagem para interligar sistemas de linguagens diferentes.
+Busque no google ou na lista de discussão que deve ter alguém que já mexeu nesta área ou está mexendo. Área científica, games, web e até mesmo como linguagem de cola, ou seja, linguagem para interligar sistemas de linguagens diferentes.
 Python atende a diversos nichos e várias bibliotecas estão disponíveis para te ajudar a não reinventar a roda.
 Mas nem tudo dá pra fazer com Python, e o mesmo é valido para toda linguagem, logo deixo o recado, uma pessoa que só tem um martelo, para ela, todo parafuso é prego.
 
