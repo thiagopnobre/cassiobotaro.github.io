@@ -1,5 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>import None</title><link href="/" rel="alternate"></link><link href="/feeds/cassio-botaro.atom.xml" rel="self"></link><id>/</id><updated>2015-03-01T00:00:00-03:00</updated><entry><title>Hello Python!</title><link href="/hello-python.html" rel="alternate"></link><updated>2015-03-01T00:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:,2015-03-01:hello-python.html</id><summary type="html">&lt;p&gt;&lt;img alt="logo-python" src="../images/logopython2.png" title="Logo Python" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>import None</title><link href="/" rel="alternate"></link><link href="/feeds/cassio-botaro.atom.xml" rel="self"></link><id>/</id><updated>2015-03-10T03:00:00-03:00</updated><entry><title>Por que python 3?</title><link href="/porque-python-3.html" rel="alternate"></link><updated>2015-03-10T03:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:,2015-03-10:porque-python-3.html</id><summary type="html">&lt;p&gt;&lt;img alt="logo-python" src="../images/logopython2.png" title="Logo Python" /&gt;&lt;/p&gt;
+&lt;h1&gt;Um pouco de história&lt;/h1&gt;
+&lt;p&gt;O python 3.0 foi uma decisão tomada em 2008, e decidiu-se assim por causa da incompatibilidade de alguns novos recursos com a versão 2.0 .
+É uma versão com novas baterias incluídas como asyncio, pip, enum, statistics, venv.
+Uma longa correção da nomeclatura de alguns módulos foi feita seguindo mais o padrão pythonico(pep-8).
+Outras mudanças foram a transformação do print em uma função, o que trouxe novas possibilidades, a utilização de visão e iteradores ao invés de listas como retorno de alguns métodos, a unificação de long e int, e várias outras mudanças que serão apresentadas.&lt;/p&gt;
+&lt;h2&gt;Mas porque python 3?&lt;/h2&gt;
+&lt;p&gt;Se a correção de nomeclatura e inclusão de novas bibliotecas à biblioteca padrão do python ainda não te convenceram, abaixo serão listados novos recursos e possibilidades que podem te atrair a esta nova versão. &lt;/p&gt;
+&lt;h2&gt;Fatiamento&lt;/h2&gt;
+&lt;p&gt;Agora é possivel extrair, inicio, meio e fim de sequencias utlizando novas possibilidades de atribuições.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;rest&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# retorna 0&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tail&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# retorna 9&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rest&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# retorna [1, 2, 3, 4, 5, 6, 7, 8]&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;rest&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rest&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# retorna [0, 1, 2, 3]&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tail&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# retorna 4&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Iteradores em todo lugar!&lt;/h2&gt;
+&lt;p&gt;Nada de se preocupar em otimizar memória modificando o metodo através da adição de algum prefixo como x  ou iter.
+Ou seja, nada mais de Xtudo ou iterlista no python 3.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="c"&gt;# retorna range(0, 10)&lt;/span&gt;
+&lt;span class="c"&gt;# não é mais uma lista&lt;/span&gt;
+&lt;span class="c"&gt;# se comporta como xrange do python 2&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;numero&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;numero&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;endp&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# 0 1 2 3 4 5 6 7 8 9&lt;/span&gt;
+&lt;span class="n"&gt;dic&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;chaveA&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;chaveB&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;chaveC&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;dic&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="c"&gt;# retorna dict_keys([&amp;#39;chaveB&amp;#39;, &amp;#39;chaveC&amp;#39;, &amp;#39;chaveA&amp;#39;])&lt;/span&gt;
+&lt;span class="c"&gt;# visão com os valores das chaves do dicionário&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chave&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;valor&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dic&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chave&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;valor&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# chaveB 2&lt;/span&gt;
+&lt;span class="c"&gt;# chaveC 3&lt;/span&gt;
+&lt;span class="c"&gt;# chaveA 1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Tipificação forte em comparadores.&lt;/h2&gt;
+&lt;p&gt;Dado que python é uma linguagem dinâmica porém  com tipificação forte, nada mais sensato que comparadores também reclamem quando tipos distintos são comparados.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# No Python 2&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;abc&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="c"&gt;# True&lt;/span&gt;
+&lt;span class="bp"&gt;None&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="c"&gt;# True&lt;/span&gt;
+
+&lt;span class="c"&gt;# No Python 3&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;abc&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="c"&gt;# TypeError: unorderable types: str() &amp;gt; int()&lt;/span&gt;
+&lt;span class="bp"&gt;None&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="c"&gt;# TypeError: unorderable types: NoneType() &amp;lt; int()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Strings divididas em bytes e unicodes&lt;/h2&gt;
+&lt;p&gt;Agora é possivél utilizar de acentos, caracteres de outros alfabetos como chinês e outros caracteres especias.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# python 2&lt;/span&gt;
+&lt;span class="n"&gt;nome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cássio&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;nome&lt;/span&gt; 
+&lt;span class="c"&gt;# &amp;#39;c\xc3\xa1ssio&lt;/span&gt;
+&lt;span class="nb"&gt;bytes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cássio&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# &amp;#39;c\xc3\xa1ssio&lt;/span&gt;
+&lt;span class="c"&gt;# bytes e strings são a mesma coisa&lt;/span&gt;
+
+&lt;span class="c"&gt;# python 3&lt;/span&gt;
+&lt;span class="n"&gt;nome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cássio&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;nome&lt;/span&gt; 
+&lt;span class="c"&gt;# &amp;#39;cássio&amp;#39;&lt;/span&gt;
+&lt;span class="nb"&gt;bytes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cássio&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;utf-8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# b&amp;#39;c\xc3\xa1ssio&amp;#39;&lt;/span&gt;
+&lt;span class="c"&gt;# bytes e strings são coisas distintas&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;E uma outra coisa permitida:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="err"&gt;Σ(&lt;/span&gt;&lt;span class="nf"&gt;lim_inf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lim_sup&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;funcao&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;#39;&amp;#39;&amp;#39;Um somatório é um operador matemático que nos permite&lt;/span&gt;
+&lt;span class="sd"&gt;    representar facilmente somas de um grande número de termos,&lt;/span&gt;
+&lt;span class="sd"&gt;    até infinitos.&lt;/span&gt;
+&lt;span class="sd"&gt;    É representado com a letra grega sigma ( \Sigma ).&lt;/span&gt;
+&lt;span class="sd"&gt;    Uma variável i chamada índice do somatório recebe como valor inicial o&lt;/span&gt;
+&lt;span class="sd"&gt;    limite inferior(lim_inf).A&lt;/span&gt;
+&lt;span class="sd"&gt;    Esta variável percorre os valores inteiros até alcançar o limite&lt;/span&gt;
+&lt;span class="sd"&gt;    superior(lim_sup).&lt;/span&gt;
+&lt;span class="sd"&gt;    A cada iteração uma função(funcao) é executada sobre o índice do&lt;/span&gt;
+&lt;span class="sd"&gt;    somatório.&lt;/span&gt;
+&lt;span class="sd"&gt;    A função de entrada (funcao) deve receber um valor de entrada e retornar&lt;/span&gt;
+&lt;span class="sd"&gt;    um valor de saída.&lt;/span&gt;
+
+&lt;span class="sd"&gt;    Σ(1,5,lambda x:x) = 1 + 2 + 3 + 4 + 5 = 15&lt;/span&gt;
+
+&lt;span class="sd"&gt;    &amp;gt;&amp;gt;&amp;gt; Σ(1,5,lambda x:x)&lt;/span&gt;
+&lt;span class="sd"&gt;    15&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;funcao&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lim_inf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lim_sup&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Leitura de dados de forma segura&lt;/h2&gt;
+&lt;p&gt;Toda leitura de dados feita do teclado é feita em forma de string  e cabe ao programa sua manipulação.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# No python 2 &lt;/span&gt;
+&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Comando a ser executado: &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# experimente a expressão 80*&amp;#39;-&amp;#39; como entrada&lt;/span&gt;
+&lt;span class="c"&gt;# embora no python 2 existe uma versão mais segura que é o raw_input&lt;/span&gt;
+&lt;span class="c"&gt;# no python 3&lt;/span&gt;
+&lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Digite um número: &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# &amp;#39;4&amp;#39;&lt;/span&gt;
+&lt;span class="c"&gt;# o input sempre retorna string e caso precise deve ser explicitamente convertida&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;python -m modulo&lt;/h2&gt;
+&lt;p&gt;Uma série de módulos da biblioteca padão se utilizam do artificio de colocar uma condicional para verificar quando são executados ou importados e podem ser utilizados como ferramentas.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# criação de um ambiente virtual&lt;/span&gt;
+python -m venv /path/to/&amp;lt;my_venv&amp;gt;
+&lt;span class="c"&gt;# ubuntu apresenta problemas, nele utilize&lt;/span&gt;
+python -m venv --without-pip /path/to/&amp;lt;my_venv&amp;gt;
+&lt;span class="c"&gt;# ativação deste ambiente&lt;/span&gt;
+&lt;span class="nb"&gt;source&lt;/span&gt; /path/to/&amp;lt;my_venv&amp;gt;/bin/activate
+
+&lt;span class="c"&gt;# PYTHONPATH&lt;/span&gt;
+python -m site
+
+&lt;span class="c"&gt;# Servidor http python&lt;/span&gt;
+python -m http.server &lt;span class="o"&gt;[&lt;/span&gt;port&lt;span class="o"&gt;]&lt;/span&gt;
+
+&lt;span class="c"&gt;# Documentação&lt;/span&gt;
+python -m pydoc
+&lt;span class="c"&gt;# b para abrir documentação no browser&lt;/span&gt;
+python -m pydoc -b
+&lt;span class="c"&gt;# ou especifique o módulo&lt;/span&gt;
+python -m pydoc math.sin
+
+&lt;span class="c"&gt;# debug estilo gdb&lt;/span&gt;
+python -m pdb &amp;lt;nomedoprograma.py&amp;gt;
+
+&lt;span class="c"&gt;# profiler&lt;/span&gt;
+python -m profile &amp;lt;nomedoprograma.py&amp;gt;
+
+&lt;span class="c"&gt;#exibe um calendario&lt;/span&gt;
+python -m calendar
+
+&lt;span class="c"&gt;# recebe entrada json e imprime&lt;/span&gt;
+python -m json.tool
+
+&lt;span class="c"&gt;# codifica e decodifica um texto em base64&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Hello World&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; python -m base64 -e
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;SGVsbG8gV29ybGQK&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; python -m base64 -d
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;E mais uma infinidade de outros recursos&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# set comprehension&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;something&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;# dict comprehension &lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;something&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;# 3/2 agora retorna 1.5 &lt;/span&gt;
+
+&lt;span class="c"&gt;# notação para numeros em base oito e desesseis&lt;/span&gt;
+&lt;span class="c"&gt;# 0o99 &lt;/span&gt;
+&lt;span class="c"&gt;# 0x44&lt;/span&gt;
+
+&lt;span class="c"&gt;# Não dá mais pra trolar amigos&lt;/span&gt;
+&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="c"&gt;# SyntaxError: can&amp;#39;t assign to keyword&lt;/span&gt;
+
+&lt;span class="c"&gt;# asyncio&lt;/span&gt;
+&lt;span class="c"&gt;# aqui uma utilização interessante&lt;/span&gt;
+&lt;span class="c"&gt;# http://compiletoi.net/fast-scraping-in-python-with-asyncio.html&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Considerações finais&lt;/h2&gt;
+&lt;p&gt;Ainda existem  várias funcionalidades que infelizmente não serão apresentadas neste post devido a extensão do mesmo. Espero que tenham curtido e com o crescimento do numero de bibliotecas com suporte para o python 3, como Django, nltk, numpy e muitas outras, está esperando o que para dar suporte ao python 3 em seu projeto?&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.diveintopython3.net/"&gt;Vamos mergulhar no Python 3?&lt;/a&gt; Algumas ferramentas que podem te ajudar:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://pythonhosted.org//six/"&gt;six&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.python.org/2/library/2to3.html"&gt;2to3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;E se tem duvida sobre suporte de alguma bilbioteca, confira &lt;a href="https://caniusepython3.com/"&gt;aqui&lt;/a&gt;. &lt;/p&gt;</summary><category term="python"></category><category term="python3"></category><category term="iniciantes"></category></entry><entry><title>Hello Python!</title><link href="/hello-python.html" rel="alternate"></link><updated>2015-03-01T00:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:,2015-03-01:hello-python.html</id><summary type="html">&lt;p&gt;&lt;img alt="logo-python" src="../images/logopython2.png" title="Logo Python" /&gt;&lt;/p&gt;
 &lt;h1&gt;FAQ&lt;/h1&gt;
 &lt;p&gt;Como algumas perguntas são recorrentes nas listas de discussões, nos grupos do facebook e outros meios de comunicação e nossa comunidade gosta de receber bem os iniciantes, responderei aqui aquelas dúvidas que são constantes.&lt;/p&gt;
 &lt;h2&gt;Python roda no (coloque aqui sua plataforma) ?&lt;/h2&gt;
