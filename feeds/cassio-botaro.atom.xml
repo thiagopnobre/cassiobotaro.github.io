@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>import None</title><link href="http://cassiobotaro.github.io/" rel="alternate"></link><link href="http://cassiobotaro.github.io/feeds/cassio-botaro.atom.xml" rel="self"></link><id>http://cassiobotaro.github.io/</id><updated>2015-03-10T03:00:00-03:00</updated><entry><title>Por que python 3?</title><link href="http://cassiobotaro.github.io/porque-python-3.html" rel="alternate"></link><updated>2015-03-10T03:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-03-10:porque-python-3.html</id><summary type="html">&lt;p&gt;&lt;img alt="logo-python" src="../images/logopython2.png" title="Logo Python" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>import None</title><link href="http://cassiobotaro.github.io/" rel="alternate"></link><link href="http://cassiobotaro.github.io/feeds/cassio-botaro.atom.xml" rel="self"></link><id>http://cassiobotaro.github.io/</id><updated>2015-03-25T03:00:00-03:00</updated><entry><title>Meu ambiente de trabalho</title><link href="http://cassiobotaro.github.io/meu-ambiente.html" rel="alternate"></link><updated>2015-03-25T03:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-03-25:meu-ambiente.html</id><summary type="html">&lt;h1&gt;Frustração&lt;/h1&gt;
+&lt;p&gt;Sempre fui perfeccionista com meu editor de texto, já tentei várias ide's, mas sempre ficava faltando algum recurso que eu queria ou era pesada pra carregar e lenta na execução.
+Spyder era legal, seu debugger é um dos melhores, o pydev era pesado, mas também interessante, Ninja IDE me atendeu por um tempo mais ainda assim não totalmente. Pycharm, gedit(até escrevi plugin para ele) e mais uma infinidade de editores.
+Sempre tinha um recurso que faltava e eu não conseguia me decidir.
+Foi ai que comecei com vim, utilizei por um tempo, mas eu gastava muito tempo configurando para torna-lo da maneira que eu gostava.
+Nesta época comecei a escrever scripts para automatzar os processos.&lt;/p&gt;
+&lt;h1&gt;Solução&lt;/h1&gt;
+&lt;p&gt;Sempre digo a todos, o melhor editor é aquele ao qual você mais se adapta e  se torna produtivo. O Sublime Text foi o que mais me identifiquei, logo aprendi os seus atalhos e adotei como editor padrao.
+Mas ainda faltava os vários recursos que outros editores me forneciam.
+Com a necessidade de preparar um abiente para programação python e personalizar o editor de texto, surgiu o &lt;a href="https://github.com/cassiobotaro/my_environment"&gt;my_enviroment&lt;/a&gt;.&lt;/p&gt;
+&lt;h1&gt;Meu Ambiente&lt;/h1&gt;
+&lt;p&gt;Abaixo alguns recursos da minha configuração.&lt;/p&gt;
+&lt;h5&gt;ATENÇÂO: O script foi desenvolvido e testado em Ubuntu e linux Mint&lt;/h5&gt;
+&lt;h2&gt;Isolamento de ambientes virtuais utilizando virtualenvwrapper&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="virtualenv" src="../images/virtualenv.png" title="Virtualenv" /&gt;
+&lt;img alt="ambiente isolado" src="../images/ambientes_isolados.png" title="Ambientes isolados" /&gt;&lt;/p&gt;
+&lt;h2&gt;Ipython&lt;/h2&gt;
+&lt;h3&gt;Terminal interativo com esteroides&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="ipython" src="../images/ipython.png" title="Ipython" /&gt;&lt;/p&gt;
+&lt;h2&gt;Complete para Django e Web2py&lt;/h2&gt;
+&lt;h3&gt;Auto completar para web2py e django, vários snippets&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="Django" src="../images/django.png" /&gt;
+&lt;img alt="web2py" src="../images/web2py.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;Um pouco de JS&lt;/h2&gt;
+&lt;h3&gt;Auto completar e formatação&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="antes_format_js" src="../images/antes_format_js.png" /&gt;
+&lt;img alt="depois_format_js" src="../images/depois_format_js.png" /&gt;
+&lt;img alt="console_log" src="../images/console_log.png" /&gt;
+&lt;img alt="query_selector" src="../images/query_selector.png" /&gt;&lt;/p&gt;
+&lt;h1&gt;Integração com git&lt;/h1&gt;
+&lt;h3&gt;Comandos como push, pull, diff, status, etc, além do gutter que indica onde os arquivos foram modificados&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="git" src="../images/git.png" /&gt;
+&lt;img alt="gutter" src="../images/gutter.png" /&gt;&lt;/p&gt;
+&lt;h1&gt;REPL&lt;/h1&gt;
+&lt;h3&gt;Terminal interativo para python, bash e outros. Sem contar a opção de debug.&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="repl_python" src="../images/repl_python.png" /&gt;
+&lt;img alt="repl_shell" src="../images/repl_shell.png" /&gt;&lt;/p&gt;
+&lt;h1&gt;Emmet&lt;/h1&gt;
+&lt;h3&gt;Facilitando algum front-end&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="emmet1" src="../images/emmet1.png" /&gt;
+&lt;img alt="emmet2" src="../images/emmet2.png" /&gt;
+&lt;img alt="emmet3" src="../images/emmet3.png" /&gt;
+&lt;img alt="emmet4" src="../images/emmet4.png" /&gt;&lt;/p&gt;
+&lt;h1&gt;E muito mais&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="docstring" src="../images/docstring.png" /&gt;
+&lt;img alt="highcolor" src="../images/highcolor.png" /&gt;
+&lt;img alt="markdown_editing" src="../images/markdown_editing.png" /&gt;
+&lt;img alt="preview_mark" src="../images/preview_mark.png" /&gt;
+&lt;img alt="requirements_txt" src="../images/requirements_txt.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Curtiu? Dê uma estrelinha pro projeto e faça seu fork e suas próprias configurações.&lt;/p&gt;</summary><category term="python"></category><category term="sublimetext"></category><category term="iniciantes"></category></entry><entry><title>Por que python 3?</title><link href="http://cassiobotaro.github.io/porque-python-3.html" rel="alternate"></link><updated>2015-03-10T03:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-03-10:porque-python-3.html</id><summary type="html">&lt;p&gt;&lt;img alt="logo-python" src="../images/logopython2.png" title="Logo Python" /&gt;&lt;/p&gt;
 &lt;h1&gt;Um pouco de história&lt;/h1&gt;
 &lt;p&gt;O python 3.0 foi uma decisão tomada em 2008, e decidiu-se assim por causa da incompatibilidade de alguns novos recursos com a versão 2.0 .
 É uma versão com novas baterias incluídas como asyncio, pip, enum, statistics, venv.
