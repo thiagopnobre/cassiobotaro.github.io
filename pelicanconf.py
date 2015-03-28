@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
 
-AUTHOR = u'C\xe1ssio Botaro'
-SITENAME = u'import None'
+AUTHOR = 'Cássio Botaro'
+SITENAME = 'import None'
 SITEURL = 'http://cassiobotaro.github.io'
 
 PATH = 'content'

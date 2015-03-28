@@ -1,6 +1,6 @@
 Title: Por que python 3?
 Date: 2015-03-10 03:00  
-Category: Python  
+Category: Python3  
 Tags: python, python3, iniciantes 
 Slug: porque-python-3 
 Author: Cássio Botaro  
