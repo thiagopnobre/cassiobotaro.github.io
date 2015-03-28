@@ -1,5 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>import None</title><link>http://cassiobotaro.github.io/</link><description></description><atom:link href="http://cassiobotaro.github.io/feeds/cassio-botaro.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 25 Mar 2015 03:00:00 -0300</lastBuildDate><item><title>Meu ambiente de trabalho</title><link>http://cassiobotaro.github.io/meu-ambiente.html</link><description>&lt;h1&gt;Frustração&lt;/h1&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>import None</title><link>http://cassiobotaro.github.io/</link><description></description><atom:link href="http://cassiobotaro.github.io/feeds/cassio-botaro.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 28 Mar 2015 19:00:00 -0300</lastBuildDate><item><title>Argumentos somente por palavra chave</title><link>http://cassiobotaro.github.io/argumentos-somente-por-palavra-chave.html</link><description>&lt;p&gt;Python 3 ainda possui uma névoa sobre ele, e o movimento de resistência ainda é grande. Mas isto não quer dizer que desbravadores já não o estejam explorando.
+Já escrevi um &lt;a href="http://cassiobotaro.github.io/porque-python-3.html"&gt;post&lt;/a&gt; sobre a nova versão da linguagem, porém ainda tem vários recursos que podem ser demonstrados.
+Um deles é a capacidade de aceitar somente palavras chaves como argumento.
+Eu até coloquei isto nos slides da Python Brasil 10, porém senti que ao apresentar faltou uma boa explicação.&lt;/p&gt;
+&lt;h2&gt;Talk is cheap. Show me the code&lt;/h2&gt;
+&lt;p&gt;Tentarei dar um exemplo utilizando código, explicarei utilizando os comentários&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# vamos iniciar com a seguinte função&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;funcao&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arg1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;arg2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kill&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;kill&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;shutil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rmtree&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="c"&gt;# realiza operacao&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+
+&lt;span class="c"&gt;# e por algum algum descuido...&lt;/span&gt;
+&lt;span class="n"&gt;funcao&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# o que acontece?&lt;/span&gt;
+&lt;span class="c"&gt;# possivelmente você acaba de ser demitido&lt;/span&gt;
+
+&lt;span class="c"&gt;# Agora vamos corrigir isto utilizando python3&lt;/span&gt;
+&lt;span class="c"&gt;# lembre-se que daqui pra baixo, a sintáxe não é ocmpativel com python 2&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;funcao&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arg1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;arg2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kill&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;kill&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;shutil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rmtree&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="c"&gt;# realiza operacao&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+
+&lt;span class="c"&gt;# Basta colocar um * e pronto&lt;/span&gt;
+&lt;span class="c"&gt;# agora se cometer um erro o python 3 te alerta&lt;/span&gt;
+&lt;span class="n"&gt;funcao&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# TypeError: funcao() takes 2 positional arguments but 3 were given&lt;/span&gt;
+
+&lt;span class="c"&gt;# Mas o que é esse asterico, é igual o args?&lt;/span&gt;
+&lt;span class="c"&gt;# Na verdade é similar, porém o interpretador sabe que se não foi definido o &lt;/span&gt;
+&lt;span class="c"&gt;# &amp;quot;args&amp;quot; um erro deve ser lançado&lt;/span&gt;
+
+&lt;span class="c"&gt;#Mas e se eu definir o args?&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;funcao&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arg1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;arg2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kill&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;kill&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;shutil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rmtree&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="c"&gt;# realiza operacao&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+
+&lt;span class="c"&gt;# acontece que agora, todo parâmetro passado além dos dois obrigatórios(positionals), será armazenado em args, e kill só sera atribuido quando&lt;/span&gt;
+&lt;span class="c"&gt;# utilizado palavra chave&lt;/span&gt;
+&lt;span class="c"&gt;#Ex: funcao(0, 0, kill=True)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Considerações finais&lt;/h2&gt;
+&lt;p&gt;Não pense que exemplo é exagerado, pode acontecer a qualquer hora com você.
+Não brinque mais de roleta russa com seus argumentos.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="programming-motherfucker" src="../images/programming-motherfucker.jpg" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Cássio Botaro</dc:creator><pubDate>Sat, 28 Mar 2015 19:00:00 -0300</pubDate><guid>tag:cassiobotaro.github.io,2015-03-28:argumentos-somente-por-palavra-chave.html</guid><category>python3</category></item><item><title>Meu ambiente de trabalho</title><link>http://cassiobotaro.github.io/meu-ambiente.html</link><description>&lt;h1&gt;Frustração&lt;/h1&gt;
 &lt;p&gt;Sempre fui perfeccionista com meu editor de texto, já tentei várias ide's, mas sempre ficava faltando algum recurso que eu queria ou era pesada pra carregar e lenta na execução.
 Spyder era legal, seu debugger é um dos melhores, o pydev era pesado, mas também interessante, Ninja IDE me atendeu por um tempo mais ainda assim não totalmente. Pycharm, gedit(até escrevi plugin para ele) e mais uma infinidade de editores.
 Sempre tinha um recurso que faltava e eu não conseguia me decidir.
