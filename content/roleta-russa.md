@@ -6,10 +6,9 @@ Slug: argumentos-somente-por-palavra-chave
 Author: Cássio Botaro  
 Summary: Como um novo recurso do python 3 te ajuda a não brincar de roleta russa com seus parâmetros.
 
-Python 3 ainda possui uma névoa sobre ele, e o movimento de resistência ainda é grande. Mas isto não quer dizer que desbravadores já não o estejam explorando.
-Já escrevi um [post](http://cassiobotaro.github.io/porque-python-3.html) sobre a nova versão da linguagem, porém ainda tem vários recursos que podem ser demonstrados.
-Um deles é a capacidade de aceitar somente palavras chaves como argumento.
-Eu até coloquei isto nos slides da Python Brasil 10, porém senti que ao apresentar faltou uma boa explicação.
+##Por que falar sobre isto?
+
+Python 3 ainda possui uma névoa sobre ele, e o movimento de resistência ainda é grande. Mas isto não quer dizer que desbravadores já não o estejam explorando. Já escrevi um [post](http://cassiobotaro.github.io/porque-python-3.html) sobre a nova versão da linguagem, porém ainda tem vários recursos que podem ser demonstrados. Um deles é a capacidade de aceitar somente palavras chaves como argumento. Eu até coloquei isto nos slides da Python Brasil 10, porém senti que ao apresentar faltou uma boa explicação.
 
 ##Talk is cheap. Show me the code
 
