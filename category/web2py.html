@@ -2,7 +2,7 @@
 <html lang="pt"
 >
 <head>
-    <title>Meu ambiente de trabalho - import None</title>
+    <title>web2py - import None</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,23 +10,16 @@
 
 
 
-<link rel="canonical" href="http://cassiobotaro.github.io/meu-ambiente.html">
 
-        <meta name="author" content="Cássio Botaro" />
-        <meta name="keywords" content="python,sublimetext,iniciantes" />
-        <meta name="description" content="Apresentação do meu ambiente de trabalho para programação em Python(e web)." />
+    <meta name="author" content="Cássio Botaro" />
+    <meta name="keywords" content="web2py" />
 
+    <!-- Open Graph tags -->
         <meta property="og:site_name" content="import None" />
-        <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Meu ambiente de trabalho"/>
-        <meta property="og:url" content="http://cassiobotaro.github.io/meu-ambiente.html"/>
-        <meta property="og:description" content="Apresentação do meu ambiente de trabalho para programação em Python(e web)."/>
-        <meta property="article:published_time" content="2015-03-25" />
-            <meta property="article:section" content="Sublime" />
-            <meta property="article:tag" content="python" />
-            <meta property="article:tag" content="sublimetext" />
-            <meta property="article:tag" content="iniciantes" />
-            <meta property="article:author" content="Cássio Botaro" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="import None"/>
+        <meta property="og:url" content="http://cassiobotaro.github.io"/>
+        <meta property="og:description" content="import None"/>
 
 
     <!-- Bootstrap -->
@@ -60,10 +53,10 @@ import None            </a>
                         <li >
                             <a href="http://cassiobotaro.github.io/category/python3.html">Python3</a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="http://cassiobotaro.github.io/category/sublime.html">Sublime</a>
                         </li>
-                        <li >
+                        <li class="active">
                             <a href="http://cassiobotaro.github.io/category/web2py.html">Web2py</a>
                         </li>
             </ul>
@@ -80,129 +73,13 @@ import None            </a>
     <div class="row">
         <div class="col-sm-9">
 
-    <section id="content">
-        <article>
-            <header class="page-header">
-                <h1>
-                    <a href="http://cassiobotaro.github.io/meu-ambiente.html"
-                       rel="bookmark"
-                       title="Permalink to Meu ambiente de trabalho">
-                        Meu ambiente de trabalho
-                    </a>
-                </h1>
-            </header>
-            <div class="entry-content">
-                <div class="panel">
-                    <div class="panel-body">
-<footer class="post-info">
-    <span class="label label-default">Date</span>
-    <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-03-25T03:00:00-03:00"> Qua 25 março 2015</time>
-    </span>
-
-
-
-<span class="label label-default">Tags</span>
-	<a href="http://cassiobotaro.github.io/tag/python.html">python</a>
-        /
-	<a href="http://cassiobotaro.github.io/tag/sublimetext.html">sublimetext</a>
-        /
-	<a href="http://cassiobotaro.github.io/tag/iniciantes.html">iniciantes</a>
-    
-</footer><!-- /.post-info -->                    </div>
+            <article>
+                <h2><a href="http://cassiobotaro.github.io/introducao-ao-web2py.html">Introdução ao web2py</a></h2>
+                <div class="summary"><p>Uma breve introdução prática ao framework web2py e uma lista de recursos interessantes.</p>
+                    <a class="btn btn-default btn-xs" href="http://cassiobotaro.github.io/introducao-ao-web2py.html">more ...</a>
                 </div>
-                <h1>Frustração</h1>
-<p>Sempre fui perfeccionista com meu editor de texto, já tentei várias ide's, mas sempre ficava faltando algum recurso que eu queria ou era pesada pra carregar e lenta na execução.
-Spyder era legal, seu debugger é um dos melhores, o pydev era pesado, mas também interessante, Ninja IDE me atendeu por um tempo mais ainda assim não totalmente. Pycharm, gedit(até escrevi plugin para ele) e mais uma infinidade de editores.
-Sempre tinha um recurso que faltava e eu não conseguia me decidir.
-Foi ai que comecei com vim, utilizei por um tempo, mas eu gastava muito tempo configurando para torna-lo da maneira que eu gostava.
-Nesta época comecei a escrever scripts para automatzar os processos.</p>
-<h1>Solução</h1>
-<p>Sempre digo a todos, o melhor editor é aquele ao qual você mais se adapta e  se torna produtivo. O Sublime Text foi o que mais me identifiquei, logo aprendi os seus atalhos e adotei como editor padrao.
-Mas ainda faltava os vários recursos que outros editores me forneciam.
-Com a necessidade de preparar um abiente para programação python e personalizar o editor de texto, surgiu o <a href="https://github.com/cassiobotaro/my_environment">my_enviroment</a>.</p>
-<h1>Meu Ambiente</h1>
-<p>Abaixo alguns recursos da minha configuração.</p>
-<h5>ATENÇÂO: O script foi desenvolvido e testado em Ubuntu e linux Mint</h5>
-<h2>Isolamento de ambientes virtuais utilizando virtualenvwrapper</h2>
-<p><img alt="virtualenv" src="../images/virtualenv.png" title="Virtualenv" />
-<img alt="ambiente isolado" src="../images/ambientes_isolados.png" title="Ambientes isolados" /></p>
-<h2>Ipython</h2>
-<h3>Terminal interativo com esteroides</h3>
-<p><img alt="ipython" src="../images/ipython.png" title="Ipython" /></p>
-<h2>Complete para Django e Web2py</h2>
-<h3>Auto completar para web2py e django, vários snippets</h3>
-<p><img alt="Django" src="../images/django.png" />
-<img alt="web2py" src="../images/web2py.png" /></p>
-<h2>Um pouco de JS</h2>
-<h3>Auto completar e formatação</h3>
-<p><img alt="antes_format_js" src="../images/antes_format_js.png" />
-<img alt="depois_format_js" src="../images/depois_format_js.png" />
-<img alt="console_log" src="../images/console_log.png" />
-<img alt="query_selector" src="../images/query_selector.png" /></p>
-<h1>Integração com git</h1>
-<h3>Comandos como push, pull, diff, status, etc, além do gutter que indica onde os arquivos foram modificados</h3>
-<p><img alt="git" src="../images/git.png" />
-<img alt="gutter" src="../images/gutter.png" /></p>
-<h1>REPL</h1>
-<h3>Terminal interativo para python, bash e outros. Sem contar a opção de debug.</h3>
-<p><img alt="repl_python" src="../images/repl_python.png" />
-<img alt="repl_shell" src="../images/repl_shell.png" /></p>
-<h1>Emmet</h1>
-<h3>Facilitando algum front-end</h3>
-<p><img alt="emmet1" src="../images/emmet1.png" />
-<img alt="emmet2" src="../images/emmet2.png" />
-<img alt="emmet3" src="../images/emmet3.png" />
-<img alt="emmet4" src="../images/emmet4.png" /></p>
-<h1>E muito mais</h1>
-<p><img alt="docstring" src="../images/docstring.png" />
-<img alt="highcolor" src="../images/highcolor.png" />
-<img alt="markdown_editing" src="../images/markdown_editing.png" />
-<img alt="preview_mark" src="../images/preview_mark.png" />
-<img alt="requirements_txt" src="../images/requirements_txt.png" /></p>
-<p>Curtiu? Dê uma estrelinha pro projeto e faça seu fork e suas próprias configurações.</p>
-            </div>
-            <!-- /.entry-content -->
-    <hr />
-    <!-- AddThis Button BEGIN -->
-    <div class="addthis_toolbox addthis_default_style">
-            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-            <a class="addthis_button_tweet"></a>
-            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    </div>
-    <!-- AddThis Button END -->
-    <hr/>
-    <section class="comments" id="comments">
-        <h2>Comments</h2>
-
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = 'importnone'; // required: replace example with your forum shortname
-
-                    var disqus_identifier = 'meu-ambiente';
-                var disqus_url = 'http://cassiobotaro.github.io/meu-ambiente.html';
-
-            var disqus_config = function () {
-                this.language = "pt";
-            };
-
-            /* * * DON'T EDIT BELOW THIS LINE * * */
-            (function () {
-                var dsq = document.createElement('script');
-                dsq.type = 'text/javascript';
-                dsq.async = true;
-                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-            Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-    </section>
-        </article>
-    </section>
+            </article>
+            <hr/>
 
         </div>
         <div class="col-sm-3" id="sidebar">
@@ -362,7 +239,5 @@ Com a necessidade de preparar um abiente para programação python e personaliza
     </script>
     <!-- End Google Analytics Code -->
 
-        <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54023148366c6bdd"></script>
 </body>
 </html>

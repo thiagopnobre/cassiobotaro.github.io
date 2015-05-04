@@ -1,5 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>import None</title><link href="http://cassiobotaro.github.io/" rel="alternate"></link><link href="http://cassiobotaro.github.io/feeds/cassio-botaro.atom.xml" rel="self"></link><id>http://cassiobotaro.github.io/</id><updated>2015-03-28T19:00:00-03:00</updated><entry><title>Argumentos somente por palavra chave</title><link href="http://cassiobotaro.github.io/argumentos-somente-por-palavra-chave.html" rel="alternate"></link><updated>2015-03-28T19:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-03-28:argumentos-somente-por-palavra-chave.html</id><summary type="html">&lt;h2&gt;Por que falar sobre isto?&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>import None</title><link href="http://cassiobotaro.github.io/" rel="alternate"></link><link href="http://cassiobotaro.github.io/feeds/cassio-botaro.atom.xml" rel="self"></link><id>http://cassiobotaro.github.io/</id><updated>2015-05-04T00:00:00-03:00</updated><entry><title>Introdução ao web2py</title><link href="http://cassiobotaro.github.io/introducao-ao-web2py.html" rel="alternate"></link><updated>2015-05-04T00:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-05-04:introducao-ao-web2py.html</id><summary type="html">&lt;p&gt;&lt;img alt="Web2py Logo" src="../images/web2py_logo.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;Sobre o web2py&lt;/h2&gt;
+&lt;p&gt;Framework full-stack(ou seja assim como python vem com baterias incluídas), para desenvolvimento rápido, seguro, portável e orientado a banco de dados(o que não o limita).&lt;/p&gt;
+&lt;p&gt;O download pode ser feito através da página &lt;a href="http://www.web2py.com/download"&gt;http://www.web2py.com/&lt;/a&gt; e quando este artigo foi escrito estava em sua versão 2.10.X.&lt;/p&gt;
+&lt;p&gt;Embora possua versões para Windows e MAC eu recomendo sempre baixar a versão de código fonte.&lt;/p&gt;
+&lt;h2&gt;Hello Web2py(Talk is cheap. Show me the code)&lt;/h2&gt;
+&lt;p&gt;Iniciaremos criando uma aplicação mínima no web2py(sem utilizar sua interface ou um scaffolding).&lt;/p&gt;
+&lt;p&gt;Navegue até o diretório applications do web2py, crie um diretório com o nome da sua aplicação(Eu chamerei o exemplo de hello).&lt;/p&gt;
+&lt;p&gt;Dentro deste diretório inclua um diretório chamado controllers.&lt;/p&gt;
+&lt;p&gt;Em seguida crie um arquivo chamado default.py no dirório controllers e digite o seguinte código.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Hello World&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Vá no diretório raiz do web2py, rode o arquivo web2py.py e pronto!
+Para acessar sua aplicação utilize a seguinte url: http://127.0.0.1:8000/hello&lt;/p&gt;
+&lt;p&gt;Duas observações devem ser feitas neste ponto, caso navegue no diretório da sua aplicação vai notar que outros diretórios foram criados(nao se reocupe com eles por enquanto). Outra coisa é o nome do arquivo python(default) e a função(index). Isto é um padrão e pode ser modificado utilizando um arquivo de rotas.&lt;/p&gt;
+&lt;p&gt;Todo o processo acima pode ser resumido da seguinte maneira(à partir da raiz do diretório web2py):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;mkdir applications/hello &lt;span class="c"&gt;# criação da aplicação&lt;/span&gt;
+mkdir applications/hello/controllers &lt;span class="c"&gt;# criação da pasta controllers&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;def index():&amp;quot;&lt;/span&gt; &amp;gt; applications/hello/controllers/default.py
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;    return &amp;#39;Hello World&amp;#39;&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; applications/hello/controllers/default.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="Web2py Word Cloud" src="../images/tag-cloud-web2py.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;Hello Author&lt;/h2&gt;
+&lt;p&gt;Vamos tornar nosso primeiro aplicativo web mais interessante, vamos faze-lo passar a exibir um nome recebido como argumento em nossa url.&lt;/p&gt;
+&lt;p&gt;Abra novamente o controlador default.py e agora adicione o seguinte código:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;nome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O código agora foi alterado, para incialmente receber uma variável chamada nome que contém o valor do argumento 0.&lt;/p&gt;
+&lt;p&gt;Argumento 0, wtf? &lt;/p&gt;
+&lt;p&gt;Uma url pode ser decomposta assim no web2py:
+    http://host/application/controller/action/args1/args2...?var1=valor&amp;amp;var2=valor&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;- host - Domínio ou subdominio da sua aplicação(Pode ser www.algo.com ou localmente localhost:8000 sendo 8000 porta padrão do servidor web2py)
+- application - nome da sua aplicação
+- controller - nome do controlador
+- action - nome da função presente no controlador
+- args - argumentos(como parâmetros)
+- vars - são como variáveis e sempre tem um nome e um valor
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O retorno que anteriormente era um string, agora é um dicionário, este dicionário são as variáveis que estarão disponíveis na template para o contexto desta ação.&lt;/p&gt;
+&lt;p&gt;Agora crie um diretório default na pasta views e em seguida adicione um arquivo chamado index.html dentro deste diretório.&lt;/p&gt;
+&lt;p&gt;Neste arquivo adicione o seguinte conteúdo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;html&lt;/span&gt; &lt;span class="na"&gt;lang=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;pt-br&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;charset=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;UTF-8&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Hello&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Hello {{=nome}}&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Repare que este arquivo é um arquivo html comum, porém na Ttag H1 eu utilizo da linguagem de template do web2py para adicionar um recurso dinamicamente ao html.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;{{}}&lt;/code&gt; é a maneira da template do web2py reconhecer que ali código será executado antes de retornar uma resposta ao cliente. O igual indica que uma expressão deve ser avaliada, no caso do exemplo uma variável será adicionada.
+Como pode ser visto a variável nome que foi definida para o ambiente desta action(default/index) está disponível em minha template.&lt;/p&gt;
+&lt;p&gt;Agora acesse http://localhost:8000/hello/default/index/cassio ou substitua cassio por algo que queira e veja o resultado.&lt;/p&gt;
+&lt;h2&gt;Considerações finais&lt;/h2&gt;
+&lt;p&gt;Este foi o primeiro post sobre web2py do meu blog, quis ser breve. Se ficou perdido em algum detalhe, não se preocupe, deixe um comentário que adorarei lhe ajudar.&lt;/p&gt;
+&lt;p&gt;E já adiantando, teremos continuação para este post, demonstrando diversos recursos do framework e também dscutindo sobre suas "mágicas".&lt;/p&gt;
+&lt;p&gt;Gostou? Compatilhe!&lt;/p&gt;
+&lt;p&gt;[ ]'s&lt;/p&gt;</summary><category term="web2py"></category><category term="iniciantes"></category></entry><entry><title>Argumentos somente por palavra chave</title><link href="http://cassiobotaro.github.io/argumentos-somente-por-palavra-chave.html" rel="alternate"></link><updated>2015-03-28T19:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-03-28:argumentos-somente-por-palavra-chave.html</id><summary type="html">&lt;h2&gt;Por que falar sobre isto?&lt;/h2&gt;
 &lt;p&gt;Python 3 ainda possui uma névoa sobre ele, e o movimento de resistência ainda é grande. Mas isto não quer dizer que desbravadores já não o estejam explorando. Já escrevi um &lt;a href="http://cassiobotaro.github.io/porque-python-3.html"&gt;post&lt;/a&gt; sobre a nova versão da linguagem, porém ainda tem vários recursos que podem ser demonstrados. Um deles é a capacidade de aceitar somente palavras chaves como argumento. Eu até coloquei isto nos slides da Python Brasil 10, porém senti que ao apresentar faltou uma boa explicação.&lt;/p&gt;
 &lt;h2&gt;Talk is cheap. Show me the code&lt;/h2&gt;
 &lt;p&gt;Tentarei dar um exemplo utilizando código, explicarei utilizando os comentários&lt;/p&gt;
@@ -18,7 +91,7 @@
 &lt;span class="c"&gt;# possivelmente você acaba de ser demitido&lt;/span&gt;
 
 &lt;span class="c"&gt;# Agora vamos corrigir isto utilizando python3&lt;/span&gt;
-&lt;span class="c"&gt;# lembre-se que daqui pra baixo, a sintáxe não é ocmpativel com python 2&lt;/span&gt;
+&lt;span class="c"&gt;# lembre-se que daqui pra baixo, a sintáxe não é compativel com python 2&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;funcao&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arg1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;arg2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kill&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;kill&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
