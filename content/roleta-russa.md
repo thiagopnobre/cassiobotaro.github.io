@@ -31,7 +31,7 @@ funcao(1,2,3)
 # possivelmente você acaba de ser demitido
 
 # Agora vamos corrigir isto utilizando python3
-# lembre-se que daqui pra baixo, a sintáxe não é ocmpativel com python 2
+# lembre-se que daqui pra baixo, a sintáxe não é compativel com python 2
 
 def funcao(arg1, arg2, *, kill=False):
     if kill:
