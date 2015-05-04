@@ -24,7 +24,7 @@ Navegue até o diretório applications do web2py, crie um diretório com o nome 
 
 Dentro deste diretório inclua um diretório chamado controllers.
 
-Em seguida crie um arquivo chamado default.py no dirório controllers e digite o seguinte código.
+Em seguida crie um arquivo chamado default.py no diretório controllers e digite o seguinte código.
 
 ```python
 def index():
