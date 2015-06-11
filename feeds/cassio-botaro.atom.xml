@@ -1,5 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>import None</title><link href="http://cassiobotaro.github.io/" rel="alternate"></link><link href="http://cassiobotaro.github.io/feeds/cassio-botaro.atom.xml" rel="self"></link><id>http://cassiobotaro.github.io/</id><updated>2015-05-04T00:00:00-03:00</updated><entry><title>Introdução ao web2py</title><link href="http://cassiobotaro.github.io/introducao-ao-web2py.html" rel="alternate"></link><updated>2015-05-04T00:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-05-04:introducao-ao-web2py.html</id><summary type="html">&lt;p&gt;&lt;img alt="Web2py Logo" src="../images/web2py_logo.png" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>import None</title><link href="http://cassiobotaro.github.io/" rel="alternate"></link><link href="http://cassiobotaro.github.io/feeds/cassio-botaro.atom.xml" rel="self"></link><id>http://cassiobotaro.github.io/</id><updated>2015-06-11T03:00:00-03:00</updated><entry><title>Mito ou Verdade: Importação</title><link href="http://cassiobotaro.github.io/mito-ou-verdade-importacao.html" rel="alternate"></link><updated>2015-06-11T03:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-06-11:mito-ou-verdade-importacao.html</id><summary type="html">&lt;p&gt;&lt;img alt="mythbusters" src="../images/MythBusters-Logo.jpg" /&gt;&lt;/p&gt;
+&lt;h1&gt;O problema&lt;/h1&gt;
+&lt;p&gt;Vamos supor que temos uma função em um determinado módulo que precisa de utilizar de recursos de outro módulo.&lt;/p&gt;
+&lt;p&gt;Mas este outro modulo pode importar outros módulos que possivelmente não serão utilizados.&lt;/p&gt;
+&lt;p&gt;Será que a solução é fazer as importações internamente nas funções para que o carregamento seja feito de forma preguiçosa?&lt;/p&gt;
+&lt;p&gt;Esta economia de recursos é uma otimização?&lt;/p&gt;
+&lt;h2&gt;Discussão sobre o problema&lt;/h2&gt;
+&lt;p&gt;Vamos iniciar com um módulo A(moduloa.py):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# coding: utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;modulob&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;funcaoteste&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;funcao&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;#39;&amp;#39;&amp;#39;Chama função de modulo B&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;funcaoteste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;math&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;modules&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;e em um módulo B(modulob.py):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# coding: utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;math&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;funcaoteste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sin&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# mais código...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Quando executamos a função funcao, além de trazermos funcaoteste ao namespace corrente, um cache é feito para os outros módulos importados por modulob.&lt;/p&gt;
+&lt;p&gt;Agora vamos modificar o modulob para um segunda versão:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# coding: utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;funcaoteste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;math&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sin&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# mais código...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Caso rode o modulo A novamente veremos que agora math não está nos módulos até que a função seja chamada.&lt;/p&gt;
+&lt;p&gt;Para vizualizar a mudança modifique modulo A para conter o seguinte código:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;math&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;modules&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;funcao&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;math&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;modules&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Repare que somente após a chamada da função o cache do módulo math é realizado.&lt;/p&gt;
+&lt;p&gt;Porém, ao fazer isto estamos aumentando o tempo de execução da função pois a chamada a instrução de importação será executada a cada vez que função for chamada(embora o interpretador já terá compilado o módulo e responderá a chamada instântaneamente).&lt;/p&gt;
+&lt;p&gt;Em um programa que preocupação é performance esta execução pode ser prejudicial.&lt;/p&gt;
+&lt;p&gt;Para vê-la  vamos analizar o bytecode das funções:&lt;/p&gt;
+&lt;p&gt;import dis
+dis.dis(funcaoteste)&lt;/p&gt;
+&lt;p&gt;funcaoteste versão 1:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;  &lt;span class="m"&gt;8&lt;/span&gt;           &lt;span class="m"&gt;0&lt;/span&gt; LOAD_GLOBAL              &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;math&lt;span class="o"&gt;)&lt;/span&gt;
+              &lt;span class="m"&gt;3&lt;/span&gt; LOAD_ATTR                &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;sin&lt;span class="o"&gt;)&lt;/span&gt;
+              &lt;span class="m"&gt;6&lt;/span&gt; LOAD_FAST                &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;a&lt;span class="o"&gt;)&lt;/span&gt;
+              &lt;span class="m"&gt;9&lt;/span&gt; LOAD_FAST                &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;b&lt;span class="o"&gt;)&lt;/span&gt;
+             &lt;span class="m"&gt;12&lt;/span&gt; BINARY_POWER
+             &lt;span class="m"&gt;13&lt;/span&gt; LOAD_CONST               &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;3&lt;span class="o"&gt;)&lt;/span&gt;
+             &lt;span class="m"&gt;16&lt;/span&gt; BINARY_MULTIPLY
+             &lt;span class="m"&gt;17&lt;/span&gt; CALL_FUNCTION            1
+             &lt;span class="m"&gt;20&lt;/span&gt; RETURN_VALUE
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;funcaoteste versão2:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;  &lt;span class="m"&gt;7&lt;/span&gt;           &lt;span class="m"&gt;0&lt;/span&gt; LOAD_CONST               &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;-1&lt;span class="o"&gt;)&lt;/span&gt;
+              &lt;span class="m"&gt;3&lt;/span&gt; LOAD_CONST               &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;None&lt;span class="o"&gt;)&lt;/span&gt;
+              &lt;span class="m"&gt;6&lt;/span&gt; IMPORT_NAME              &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;math&lt;span class="o"&gt;)&lt;/span&gt;
+              &lt;span class="m"&gt;9&lt;/span&gt; STORE_FAST               &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;math&lt;span class="o"&gt;)&lt;/span&gt;
+
+  &lt;span class="m"&gt;8&lt;/span&gt;          &lt;span class="m"&gt;12&lt;/span&gt; LOAD_FAST                &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;math&lt;span class="o"&gt;)&lt;/span&gt;
+             &lt;span class="m"&gt;15&lt;/span&gt; LOAD_ATTR                &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;sin&lt;span class="o"&gt;)&lt;/span&gt;
+             &lt;span class="m"&gt;18&lt;/span&gt; LOAD_FAST                &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;a&lt;span class="o"&gt;)&lt;/span&gt;
+             &lt;span class="m"&gt;21&lt;/span&gt; LOAD_FAST                &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;b&lt;span class="o"&gt;)&lt;/span&gt;
+             &lt;span class="m"&gt;24&lt;/span&gt; BINARY_POWER
+             &lt;span class="m"&gt;25&lt;/span&gt; LOAD_CONST               &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;3&lt;span class="o"&gt;)&lt;/span&gt;
+             &lt;span class="m"&gt;28&lt;/span&gt; BINARY_MULTIPLY
+             &lt;span class="m"&gt;29&lt;/span&gt; CALL_FUNCTION            1
+             &lt;span class="m"&gt;32&lt;/span&gt; RETURN_VALUE
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Aqui veremos uma  diferença no bytecode  gerado e isto reflete na execução, quando executado os programas apresentam leve diferença de tempo, sendo menor na primeira abordagem.&lt;/p&gt;
+&lt;p&gt;A pep 8 também recomenda a importação no início do arquivo, isto ajuda na legibilidade do código.&lt;/p&gt;
+&lt;h2&gt;Vamos Pensar&lt;/h2&gt;
+&lt;p&gt;Como import math está dentro da função, seu código somente será executado quando a função for chamada, ou seja estou atrasando o carregamento do módulo e com isso ganhamos na inicialização do módulo. Certo? Trazer estes módulos não podem prejudicar memória?&lt;/p&gt;
+&lt;p&gt;Não está errado, realmente com a segunda abordagem, caso a função não seja chamada, a compilação do módulo não ocorre e fica delegado a cada função o carregamento do módulo. Mas isto pode trazer consigo alguns problemas como replicação de código.&lt;/p&gt;
+&lt;p&gt;Esta preocupação com a memória não é justificavel, pois se analisarmos eu não trouxe math para meu namespace, apensa deixei o modulo em cache.&lt;/p&gt;
+&lt;h2&gt;Quando realizar importação dentro da função?&lt;/h2&gt;
+&lt;p&gt;Tenho alguns motivos para fazer isto como para evitar colisão de nomes em um namespace, deixar em escopo local algum modulo ou se este módulo importado é raramente utilizado.&lt;/p&gt;
+&lt;p&gt;Porém isto deve ser pensado cautelosamente.&lt;/p&gt;
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+&lt;p&gt;Essa otimização pode ter até casos pontuais em que se aplica, mas na maioria das vezes é uma má pratica.&lt;/p&gt;
+&lt;p&gt;Logo, Mito foi derrubado!&lt;/p&gt;
+&lt;p&gt;&lt;img alt="busted" src="../images/busted.jpg" /&gt;&lt;/p&gt;</summary><category term="python"></category><category term="mito"></category><category term="verdade"></category></entry><entry><title>Introdução ao web2py</title><link href="http://cassiobotaro.github.io/introducao-ao-web2py.html" rel="alternate"></link><updated>2015-05-04T00:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-05-04:introducao-ao-web2py.html</id><summary type="html">&lt;p&gt;&lt;img alt="Web2py Logo" src="../images/web2py_logo.png" /&gt;&lt;/p&gt;
 &lt;h2&gt;Sobre o web2py&lt;/h2&gt;
 &lt;p&gt;Framework full-stack(ou seja assim como python vem com baterias incluídas), para desenvolvimento rápido, seguro, portável e orientado a banco de dados(o que não o limita).&lt;/p&gt;
 &lt;p&gt;O download pode ser feito através da página &lt;a href="http://www.web2py.com/download"&gt;http://www.web2py.com/&lt;/a&gt; e quando este artigo foi escrito estava em sua versão 2.10.X.&lt;/p&gt;
@@ -8,7 +114,7 @@
 &lt;p&gt;Iniciaremos criando uma aplicação mínima no web2py(sem utilizar sua interface ou um scaffolding).&lt;/p&gt;
 &lt;p&gt;Navegue até o diretório applications do web2py, crie um diretório com o nome da sua aplicação(Eu chamerei o exemplo de hello).&lt;/p&gt;
 &lt;p&gt;Dentro deste diretório inclua um diretório chamado controllers.&lt;/p&gt;
-&lt;p&gt;Em seguida crie um arquivo chamado default.py no dirório controllers e digite o seguinte código.&lt;/p&gt;
+&lt;p&gt;Em seguida crie um arquivo chamado default.py no diretório controllers e digite o seguinte código.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Hello World&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
