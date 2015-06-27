@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Mito ou Verdade: Importação - import None</title>
+    <title>Loop Infinito - import None</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -9,22 +9,21 @@
 
 
 
-<link rel="canonical" href="http://cassiobotaro.github.io/mito-ou-verdade-importacao.html">
+<link rel="canonical" href="http://cassiobotaro.github.io/loop-infinito.html">
 
         <meta name="author" content="Cássio Botaro" />
-        <meta name="keywords" content="python,mito,verdade" />
-        <meta name="description" content="Importação dentro de função é uma otimização. Verdade ou mito?" />
+        <meta name="keywords" content="python,OO" />
+        <meta name="description" content="Entendendo o comportamento da linguagem, detectando um problema e apresentando a solução." />
 
         <meta property="og:site_name" content="import None" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Mito ou Verdade: Importação"/>
-        <meta property="og:url" content="http://cassiobotaro.github.io/mito-ou-verdade-importacao.html"/>
-        <meta property="og:description" content="Importação dentro de função é uma otimização. Verdade ou mito?"/>
-        <meta property="article:published_time" content="2015-06-11" />
+        <meta property="og:title" content="Loop Infinito"/>
+        <meta property="og:url" content="http://cassiobotaro.github.io/loop-infinito.html"/>
+        <meta property="og:description" content="Entendendo o comportamento da linguagem, detectando um problema e apresentando a solução."/>
+        <meta property="article:published_time" content="2015-06-27" />
             <meta property="article:section" content="Python" />
             <meta property="article:tag" content="python" />
-            <meta property="article:tag" content="mito" />
-            <meta property="article:tag" content="verdade" />
+            <meta property="article:tag" content="OO" />
             <meta property="article:author" content="Cássio Botaro" />
 
 
@@ -85,10 +84,10 @@ import None            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="http://cassiobotaro.github.io/mito-ou-verdade-importacao.html"
+                    <a href="http://cassiobotaro.github.io/loop-infinito.html"
                        rel="bookmark"
-                       title="Permalink to Mito ou Verdade: Importação">
-                        Mito ou Verdade: Importação
+                       title="Permalink to Loop Infinito">
+                        Loop Infinito
                     </a>
                 </h1>
             </header>
@@ -98,7 +97,7 @@ import None            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-06-11T03:00:00-03:00"> Qui 11 junho 2015</time>
+        <i class="fa fa-calendar"></i><time datetime="2015-06-27T18:00:00-03:00"> Sáb 27 junho 2015</time>
     </span>
 
 
@@ -108,119 +107,77 @@ import None            </a>
 <span class="label label-default">Tags</span>
 	<a href="http://cassiobotaro.github.io/tag/python.html">python</a>
         /
-	<a href="http://cassiobotaro.github.io/tag/mito.html">mito</a>
-        /
-	<a href="http://cassiobotaro.github.io/tag/verdade.html">verdade</a>
+	<a href="http://cassiobotaro.github.io/tag/oo.html">OO</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p><img alt="mythbusters" src="../images/MythBusters-Logo.jpg" /></p>
-<h1>O problema</h1>
-<p>Vamos supor que temos uma função em um determinado módulo que precisa de utilizar de recursos de outro módulo.</p>
-<p>Mas este outro modulo pode importar outros módulos que possivelmente não serão utilizados.</p>
-<p>Será que a solução é fazer as importações internamente nas funções para que o carregamento seja feito de forma preguiçosa?</p>
-<p>Esta economia de recursos é uma otimização?</p>
-<h2>Discussão sobre o problema</h2>
-<p>Vamos iniciar com um módulo A(moduloa.py):</p>
-<div class="highlight"><pre><span class="c"># coding: utf-8</span>
-<span class="kn">from</span> <span class="nn">modulob</span> <span class="kn">import</span> <span class="n">funcaoteste</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+                <h1>Loop Infinito</h1>
+<p><img alt="loop" src="../images/infinite_loop.png" title="Loop infinito" /></p>
+<h2>O problema</h2>
+<p>Vamos começar analisando o seguinte código:</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Exemplo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Exemplo</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interno</span> <span class="o">=</span> <span class="p">{}</span>
 
-<span class="k">def</span> <span class="nf">funcao</span><span class="p">():</span>
-    <span class="sd">&#39;&#39;&#39;Chama função de modulo B&#39;&#39;&#39;</span>
-    <span class="k">return</span> <span class="n">funcaoteste</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chave</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">interno</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">chave</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">&#39;math&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chave</span><span class="p">,</span> <span class="n">valor</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interno</span><span class="p">[</span><span class="n">chave</span><span class="p">]</span> <span class="o">=</span> <span class="n">valor</span>
 </pre></div>
 
 
-<p>e em um módulo B(modulob.py):</p>
-<div class="highlight"><pre><span class="c"># coding: utf-8</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-
-<span class="k">def</span> <span class="nf">funcaoteste</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">((</span><span class="n">a</span> <span class="o">**</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
-<span class="c"># mais código...</span>
+<p>Criando uma instância do exemplo e manipulando-a, as coisas parecem legais:</p>
+<div class="highlight"><pre>&gt;&gt;&gt; <span class="nv">instancia_exemplo</span> <span class="o">=</span> Exemplo<span class="o">()</span>
+&gt;&gt;&gt; instancia_exemplo<span class="o">[</span><span class="s1">&#39;chave1&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;valor1&#39;</span>
+&gt;&gt;&gt; instancia_exemplo<span class="o">[</span><span class="s1">&#39;chave2&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;valor2&#39;</span>
+&gt;&gt;&gt; instancia_exemplo.get<span class="o">(</span><span class="s1">&#39;chave1&#39;</span><span class="o">)</span>
+    <span class="s1">&#39;valor1&#39;</span> 
 </pre></div>
 
 
-<p>Quando executamos a função funcao, além de trazermos funcaoteste ao namespace corrente, um cache é feito para os outros módulos importados por modulob.</p>
-<p>Agora vamos modificar o modulob para um segunda versão:</p>
-<div class="highlight"><pre><span class="c"># coding: utf-8</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-
-<span class="k">def</span> <span class="nf">funcaoteste</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="kn">import</span> <span class="nn">math</span>
-    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">((</span><span class="n">a</span> <span class="o">**</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
-<span class="c"># mais código...</span>
+<p>Até que você decide mudar a notação para se recuperar um valor:</p>
+<div class="highlight"><pre>&gt;&gt;&gt; instancia_exemplo<span class="o">[</span><span class="s1">&#39;chave1&#39;</span><span class="o">]</span>
+    <span class="s1">&#39;valor1&#39;</span>
+&gt;&gt;&gt; instancia_exemplo<span class="o">[</span><span class="s1">&#39;chave3&#39;</span><span class="o">]</span>
+&gt;&gt;&gt; instancia_exemplo<span class="o">[</span><span class="s1">&#39;chave2&#39;</span><span class="o">]</span>
+    <span class="s1">&#39;valor2&#39;</span>
 </pre></div>
 
 
-<p>Caso rode o modulo A novamente veremos que agora math não está nos módulos até que a função seja chamada.</p>
-<p>Para vizualizar a mudança modifique modulo A para conter o seguinte código:</p>
-<div class="highlight"><pre><span class="o">...</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&#39;math&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">)</span>
-<span class="n">funcao</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&#39;math&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">)</span>
+<p>Opa! Uma chave não existentente não deveria dar um erro?</p>
+<p>Se reparar a implemenação de dunder item (<code>_getitem__</code>) vai ver que eu tenho um valor default que é retornado quando eu não encontro essa chave e este valor por padrão é None.</p>
+<p>Mas tudo bem, quando esta classe foi implementada, talvez essa seja o intuito.</p>
+<p>No código onde utilizo essa instancia eu simplesmente verifico se chave passada retorna valor nulo(None).</p>
+<p>Mas ai vem um desavisado, e vendo o <code>__getitem__</code> na classe decidi itera-la.</p>
+<div class="highlight"><pre>&gt;&gt;&gt; <span class="k">for</span> indice in instancia_exemplo:
+...    print indice 
+&gt;&gt;&gt;
 </pre></div>
 
 
-<p>Repare que somente após a chamada da função o cache do módulo math é realizado.</p>
-<p>Porém, ao fazer isto estamos aumentando o tempo de execução da função pois a chamada a instrução de importação será executada a cada vez que função for chamada(embora o interpretador já terá compilado o módulo e responderá a chamada instântaneamente).</p>
-<p>Em um programa que preocupação é performance esta execução pode ser prejudicial.</p>
-<p>Para vê-la  vamos analizar o bytecode das funções:</p>
-<p>import dis
-dis.dis(funcaoteste)</p>
-<p>funcaoteste versão 1:</p>
-<div class="highlight"><pre>  <span class="m">8</span>           <span class="m">0</span> LOAD_GLOBAL              <span class="m">0</span> <span class="o">(</span>math<span class="o">)</span>
-              <span class="m">3</span> LOAD_ATTR                <span class="m">1</span> <span class="o">(</span>sin<span class="o">)</span>
-              <span class="m">6</span> LOAD_FAST                <span class="m">0</span> <span class="o">(</span>a<span class="o">)</span>
-              <span class="m">9</span> LOAD_FAST                <span class="m">1</span> <span class="o">(</span>b<span class="o">)</span>
-             <span class="m">12</span> BINARY_POWER
-             <span class="m">13</span> LOAD_CONST               <span class="m">1</span> <span class="o">(</span>3<span class="o">)</span>
-             <span class="m">16</span> BINARY_MULTIPLY
-             <span class="m">17</span> CALL_FUNCTION            1
-             <span class="m">20</span> RETURN_VALUE
-</pre></div>
-
-
-<p>funcaoteste versão2:</p>
-<div class="highlight"><pre>  <span class="m">7</span>           <span class="m">0</span> LOAD_CONST               <span class="m">1</span> <span class="o">(</span>-1<span class="o">)</span>
-              <span class="m">3</span> LOAD_CONST               <span class="m">0</span> <span class="o">(</span>None<span class="o">)</span>
-              <span class="m">6</span> IMPORT_NAME              <span class="m">0</span> <span class="o">(</span>math<span class="o">)</span>
-              <span class="m">9</span> STORE_FAST               <span class="m">2</span> <span class="o">(</span>math<span class="o">)</span>
-
-  <span class="m">8</span>          <span class="m">12</span> LOAD_FAST                <span class="m">2</span> <span class="o">(</span>math<span class="o">)</span>
-             <span class="m">15</span> LOAD_ATTR                <span class="m">1</span> <span class="o">(</span>sin<span class="o">)</span>
-             <span class="m">18</span> LOAD_FAST                <span class="m">0</span> <span class="o">(</span>a<span class="o">)</span>
-             <span class="m">21</span> LOAD_FAST                <span class="m">1</span> <span class="o">(</span>b<span class="o">)</span>
-             <span class="m">24</span> BINARY_POWER
-             <span class="m">25</span> LOAD_CONST               <span class="m">2</span> <span class="o">(</span>3<span class="o">)</span>
-             <span class="m">28</span> BINARY_MULTIPLY
-             <span class="m">29</span> CALL_FUNCTION            1
-             <span class="m">32</span> RETURN_VALUE
-</pre></div>
-
-
-<p>Aqui veremos uma  diferença no bytecode  gerado e isto reflete na execução, quando executado os programas apresentam leve diferença de tempo, sendo menor na primeira abordagem.</p>
-<p>A pep 8 também recomenda a importação no início do arquivo, isto ajuda na legibilidade do código.</p>
-<h2>Vamos Pensar</h2>
-<p>Como import math está dentro da função, seu código somente será executado quando a função for chamada, ou seja estou atrasando o carregamento do módulo e com isso ganhamos na inicialização do módulo. Certo? Trazer estes módulos não podem prejudicar memória?</p>
-<p>Não está errado, realmente com a segunda abordagem, caso a função não seja chamada, a compilação do módulo não ocorre e fica delegado a cada função o carregamento do módulo. Mas isto pode trazer consigo alguns problemas como replicação de código.</p>
-<p>Esta preocupação com a memória não é justificavel, pois se analisarmos eu não trouxe math para meu namespace, apensa deixei o modulo em cache.</p>
-<h2>Quando realizar importação dentro da função?</h2>
-<p>Tenho alguns motivos para fazer isto como para evitar colisão de nomes em um namespace, deixar em escopo local algum modulo ou se este módulo importado é raramente utilizado.</p>
-<p>Porém isto deve ser pensado cautelosamente.</p>
-<h2>Conclusão</h2>
-<p>Essa otimização pode ter até casos pontuais em que se aplica, mas na maioria das vezes é uma má pratica.</p>
-<p>Logo, Mito foi derrubado!</p>
-<p><img alt="busted" src="../images/busted.jpg" /></p>
+<p>E Pam!</p>
+<p><img alt="Pane" src="../images/panic.gif" title="Pane no sistema" /></p>
+<p>Seu programa entra em loop infinito. </p>
+<h2>Como funciona o Python em termos de iteração?</h2>
+<p>Vamos  começar por conceitos. Iterável, é tudo aquilo que pode ser percorrido, não confunda com iterador que é um padrão de projeto. Em Python, listas, tuplas, geradores e dicionarios podem ser percorridos.</p>
+<p>Mas como posso definir para o interpretador que algo pode ser percorrível?</p>
+<p>Algo que pode ser percorrível em Python, possui uma função <code>__iter___</code> que retorna um iterador. Um iterador é um padrão de projeto aplicado em containers e seguem um protocolo para este container ser percorrido.</p>
+<p>Uma outra opção é  a existência da função <code>__getitem__</code> <strong>que aceite itens numéricos e lançam IndexError indicando que o percurso foi finalizado</strong>.</p>
+<p>Dito isso já dá pra se ter uma idéia do que aconteceu em nosso código. Quando o laço de repetição(for) foi iniciado o interpretador tentou atribuir exaustivamente valores de 0..n para <code>__getitem__</code> que continuava responder None e nenhuma exceção foi lançada.</p>
+<h2>A solução</h2>
+<p>Não há solução, porque não é um problema, apenas uma confusão causada sobre interpretação de iteráveis.</p>
+<p>Porém analisando o código acima, acho que o grande problema neste código é a tentiva de suprimir uma exceção. Para casos em que isto ocorre o proprio dicionário já nos fornece um método chamado <code>get</code>.</p>
+<p>É até dificil falar que a solução é o metódo get, pois este exemplo também nos faz pensar sobre a classe Exemplo que é basicamente um dicionário e caso algum estado ou ação seja adicionado ao objeto, talvez uma melhor reescrita seria através de herança.   </p>
+<h2>Moral da história</h2>
+<p>Seja cuidadoso ao reescrever os <code>special methods</code>, lembrem-se que o maquinário para a execução destes métodos está presente no interpretador e que existe um protocolo estabelecido.</p>
+<p>Lembre-se também que suprimir exceções podem fazer com que erros sejam silenciados e isto não é pythônico.</p>
+<h2>Créditos</h2>
+<p>Este post só se tornou possível após consulta de duas fontes:</p>
+<p><a href="http://stackoverflow.com/questions/926574/why-does-defining-getitem-on-a-class-make-it-iterable-in-python">Resposta do Alex Martelli</a></p>
+<p><a href="https://www.youtube.com/watch?v=ULj7ejvuzI8">Palestra do Luciano Ramalho</a></p>
             </div>
             <!-- /.entry-content -->
     <hr />
@@ -240,8 +197,8 @@ dis.dis(funcaoteste)</p>
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'importnone'; // required: replace example with your forum shortname
 
-                    var disqus_identifier = 'mito-ou-verdade-importacao';
-                var disqus_url = 'http://cassiobotaro.github.io/mito-ou-verdade-importacao.html';
+                    var disqus_identifier = 'loop-infinito';
+                var disqus_url = 'http://cassiobotaro.github.io/loop-infinito.html';
 
             var disqus_config = function () {
                 this.language = "pt";

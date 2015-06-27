@@ -1,5 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>import None</title><link>http://cassiobotaro.github.io/</link><description></description><atom:link href="http://cassiobotaro.github.io/feeds/cassio-botaro.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 11 Jun 2015 03:00:00 -0300</lastBuildDate><item><title>Mito ou Verdade: Importação</title><link>http://cassiobotaro.github.io/mito-ou-verdade-importacao.html</link><description>&lt;p&gt;&lt;img alt="mythbusters" src="../images/MythBusters-Logo.jpg" /&gt;&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>import None</title><link>http://cassiobotaro.github.io/</link><description></description><atom:link href="http://cassiobotaro.github.io/feeds/cassio-botaro.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 27 Jun 2015 18:00:00 -0300</lastBuildDate><item><title>Loop Infinito</title><link>http://cassiobotaro.github.io/loop-infinito.html</link><description>&lt;h1&gt;Loop Infinito&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="loop" src="../images/infinite_loop.png" title="Loop infinito" /&gt;&lt;/p&gt;
+&lt;h2&gt;O problema&lt;/h2&gt;
+&lt;p&gt;Vamos começar analisando o seguinte código:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Exemplo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Exemplo&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;interno&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__getitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;chave&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;interno&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chave&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__setitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;chave&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;valor&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;interno&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;chave&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;valor&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Criando uma instância do exemplo e manipulando-a, as coisas parecem legais:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; &lt;span class="nv"&gt;instancia_exemplo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; Exemplo&lt;span class="o"&gt;()&lt;/span&gt;
+&amp;gt;&amp;gt;&amp;gt; instancia_exemplo&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;chave1&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;valor1&amp;#39;&lt;/span&gt;
+&amp;gt;&amp;gt;&amp;gt; instancia_exemplo&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;chave2&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;valor2&amp;#39;&lt;/span&gt;
+&amp;gt;&amp;gt;&amp;gt; instancia_exemplo.get&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;chave1&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;valor1&amp;#39;&lt;/span&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Até que você decide mudar a notação para se recuperar um valor:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; instancia_exemplo&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;chave1&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;valor1&amp;#39;&lt;/span&gt;
+&amp;gt;&amp;gt;&amp;gt; instancia_exemplo&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;chave3&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&amp;gt;&amp;gt;&amp;gt; instancia_exemplo&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;chave2&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;valor2&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Opa! Uma chave não existentente não deveria dar um erro?&lt;/p&gt;
+&lt;p&gt;Se reparar a implemenação de dunder item (&lt;code&gt;_getitem__&lt;/code&gt;) vai ver que eu tenho um valor default que é retornado quando eu não encontro essa chave e este valor por padrão é None.&lt;/p&gt;
+&lt;p&gt;Mas tudo bem, quando esta classe foi implementada, talvez essa seja o intuito.&lt;/p&gt;
+&lt;p&gt;No código onde utilizo essa instancia eu simplesmente verifico se chave passada retorna valor nulo(None).&lt;/p&gt;
+&lt;p&gt;Mas ai vem um desavisado, e vendo o &lt;code&gt;__getitem__&lt;/code&gt; na classe decidi itera-la.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; &lt;span class="k"&gt;for&lt;/span&gt; indice in instancia_exemplo:
+...    print indice 
+&amp;gt;&amp;gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;E Pam!&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Pane" src="../images/panic.gif" title="Pane no sistema" /&gt;&lt;/p&gt;
+&lt;p&gt;Seu programa entra em loop infinito. &lt;/p&gt;
+&lt;h2&gt;Como funciona o Python em termos de iteração?&lt;/h2&gt;
+&lt;p&gt;Vamos  começar por conceitos. Iterável, é tudo aquilo que pode ser percorrido, não confunda com iterador que é um padrão de projeto. Em Python, listas, tuplas, geradores e dicionarios podem ser percorridos.&lt;/p&gt;
+&lt;p&gt;Mas como posso definir para o interpretador que algo pode ser percorrível?&lt;/p&gt;
+&lt;p&gt;Algo que pode ser percorrível em Python, possui uma função &lt;code&gt;__iter___&lt;/code&gt; que retorna um iterador. Um iterador é um padrão de projeto aplicado em containers e seguem um protocolo para este container ser percorrido.&lt;/p&gt;
+&lt;p&gt;Uma outra opção é  a existência da função &lt;code&gt;__getitem__&lt;/code&gt; &lt;strong&gt;que aceite itens numéricos e lançam IndexError indicando que o percurso foi finalizado&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Dito isso já dá pra se ter uma idéia do que aconteceu em nosso código. Quando o laço de repetição(for) foi iniciado o interpretador tentou atribuir exaustivamente valores de 0..n para &lt;code&gt;__getitem__&lt;/code&gt; que continuava responder None e nenhuma exceção foi lançada.&lt;/p&gt;
+&lt;h2&gt;A solução&lt;/h2&gt;
+&lt;p&gt;Não há solução, porque não é um problema, apenas uma confusão causada sobre interpretação de iteráveis.&lt;/p&gt;
+&lt;p&gt;Porém analisando o código acima, acho que o grande problema neste código é a tentiva de suprimir uma exceção. Para casos em que isto ocorre o proprio dicionário já nos fornece um método chamado &lt;code&gt;get&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;É até dificil falar que a solução é o metódo get, pois este exemplo também nos faz pensar sobre a classe Exemplo que é basicamente um dicionário e caso algum estado ou ação seja adicionado ao objeto, talvez uma melhor reescrita seria através de herança.   &lt;/p&gt;
+&lt;h2&gt;Moral da história&lt;/h2&gt;
+&lt;p&gt;Seja cuidadoso ao reescrever os &lt;code&gt;special methods&lt;/code&gt;, lembrem-se que o maquinário para a execução destes métodos está presente no interpretador e que existe um protocolo estabelecido.&lt;/p&gt;
+&lt;p&gt;Lembre-se também que suprimir exceções podem fazer com que erros sejam silenciados e isto não é pythônico.&lt;/p&gt;
+&lt;h2&gt;Créditos&lt;/h2&gt;
+&lt;p&gt;Este post só se tornou possível após consulta de duas fontes:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://stackoverflow.com/questions/926574/why-does-defining-getitem-on-a-class-make-it-iterable-in-python"&gt;Resposta do Alex Martelli&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=ULj7ejvuzI8"&gt;Palestra do Luciano Ramalho&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Cássio Botaro</dc:creator><pubDate>Sat, 27 Jun 2015 18:00:00 -0300</pubDate><guid>tag:cassiobotaro.github.io,2015-06-27:loop-infinito.html</guid><category>python</category><category>OO</category></item><item><title>Mito ou Verdade: Importação</title><link>http://cassiobotaro.github.io/mito-ou-verdade-importacao.html</link><description>&lt;p&gt;&lt;img alt="mythbusters" src="../images/MythBusters-Logo.jpg" /&gt;&lt;/p&gt;
 &lt;h1&gt;O problema&lt;/h1&gt;
 &lt;p&gt;Vamos supor que temos uma função em um determinado módulo que precisa de utilizar de recursos de outro módulo.&lt;/p&gt;
 &lt;p&gt;Mas este outro modulo pode importar outros módulos que possivelmente não serão utilizados.&lt;/p&gt;
