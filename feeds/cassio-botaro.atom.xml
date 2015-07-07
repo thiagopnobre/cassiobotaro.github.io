@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>import None</title><link href="http://cassiobotaro.github.io/" rel="alternate"></link><link href="http://cassiobotaro.github.io/feeds/cassio-botaro.atom.xml" rel="self"></link><id>http://cassiobotaro.github.io/</id><updated>2015-06-27T18:00:00-03:00</updated><entry><title>Loop Infinito</title><link href="http://cassiobotaro.github.io/loop-infinito.html" rel="alternate"></link><updated>2015-06-27T18:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-06-27:loop-infinito.html</id><summary type="html">&lt;h1&gt;Loop Infinito&lt;/h1&gt;
-&lt;p&gt;&lt;img alt="loop" src="../images/infinite_loop.png" title="Loop infinito" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>import None</title><link href="http://cassiobotaro.github.io/" rel="alternate"></link><link href="http://cassiobotaro.github.io/feeds/cassio-botaro.atom.xml" rel="self"></link><id>http://cassiobotaro.github.io/</id><updated>2015-06-27T18:00:00-03:00</updated><entry><title>Loop Infinito</title><link href="http://cassiobotaro.github.io/loop-infinito.html" rel="alternate"></link><updated>2015-06-27T18:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-06-27:loop-infinito.html</id><summary type="html">&lt;p&gt;&lt;img alt="loop" src="../images/infinite_loop.png" title="Loop infinito" /&gt;&lt;/p&gt;
 &lt;h2&gt;O problema&lt;/h2&gt;
 &lt;p&gt;Vamos começar analisando o seguinte código:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Exemplo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -66,7 +65,7 @@
 &lt;p&gt;Este post só se tornou possível após consulta de duas fontes:&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://stackoverflow.com/questions/926574/why-does-defining-getitem-on-a-class-make-it-iterable-in-python"&gt;Resposta do Alex Martelli&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=ULj7ejvuzI8"&gt;Palestra do Luciano Ramalho&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="OO"></category></entry><entry><title>Mito ou Verdade: Importação</title><link href="http://cassiobotaro.github.io/mito-ou-verdade-importacao.html" rel="alternate"></link><updated>2015-06-11T03:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-06-11:mito-ou-verdade-importacao.html</id><summary type="html">&lt;p&gt;&lt;img alt="mythbusters" src="../images/MythBusters-Logo.jpg" /&gt;&lt;/p&gt;
-&lt;h1&gt;O problema&lt;/h1&gt;
+&lt;h2&gt;O problema&lt;/h2&gt;
 &lt;p&gt;Vamos supor que temos uma função em um determinado módulo que precisa de utilizar de recursos de outro módulo.&lt;/p&gt;
 &lt;p&gt;Mas este outro modulo pode importar outros módulos que possivelmente não serão utilizados.&lt;/p&gt;
 &lt;p&gt;Será que a solução é fazer as importações internamente nas funções para que o carregamento seja feito de forma preguiçosa?&lt;/p&gt;
@@ -298,19 +297,19 @@ Como pode ser visto a variável nome que foi definida para o ambiente desta acti
 &lt;h2&gt;Considerações finais&lt;/h2&gt;
 &lt;p&gt;Não pense que exemplo é exagerado, pode acontecer a qualquer hora com você.
 Não brinque mais de roleta russa com seus argumentos.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="programming-motherfucker" src="../images/programming-motherfucker.jpg" /&gt;&lt;/p&gt;</summary><category term="python3"></category></entry><entry><title>Meu ambiente de trabalho</title><link href="http://cassiobotaro.github.io/meu-ambiente.html" rel="alternate"></link><updated>2015-03-25T03:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-03-25:meu-ambiente.html</id><summary type="html">&lt;h1&gt;Frustração&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="programming-motherfucker" src="../images/programming-motherfucker.jpg" /&gt;&lt;/p&gt;</summary><category term="python3"></category></entry><entry><title>Meu ambiente de trabalho</title><link href="http://cassiobotaro.github.io/meu-ambiente.html" rel="alternate"></link><updated>2015-03-25T03:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-03-25:meu-ambiente.html</id><summary type="html">&lt;h2&gt;Frustração&lt;/h2&gt;
 &lt;p&gt;Sempre fui perfeccionista com meu editor de texto, já tentei várias ide's, mas sempre ficava faltando algum recurso que eu queria ou era pesada pra carregar e lenta na execução.
 Spyder era legal, seu debugger é um dos melhores, o pydev era pesado, mas também interessante, Ninja IDE me atendeu por um tempo mais ainda assim não totalmente. Pycharm, gedit(até escrevi plugin para ele) e mais uma infinidade de editores.
 Sempre tinha um recurso que faltava e eu não conseguia me decidir.
 Foi ai que comecei com vim, utilizei por um tempo, mas eu gastava muito tempo configurando para torna-lo da maneira que eu gostava.
 Nesta época comecei a escrever scripts para automatzar os processos.&lt;/p&gt;
-&lt;h1&gt;Solução&lt;/h1&gt;
+&lt;h2&gt;Solução&lt;/h2&gt;
 &lt;p&gt;Sempre digo a todos, o melhor editor é aquele ao qual você mais se adapta e  se torna produtivo. O Sublime Text foi o que mais me identifiquei, logo aprendi os seus atalhos e adotei como editor padrao.
 Mas ainda faltava os vários recursos que outros editores me forneciam.
 Com a necessidade de preparar um abiente para programação python e personalizar o editor de texto, surgiu o &lt;a href="https://github.com/cassiobotaro/my_environment"&gt;my_enviroment&lt;/a&gt;.&lt;/p&gt;
-&lt;h1&gt;Meu Ambiente&lt;/h1&gt;
+&lt;h2&gt;Meu Ambiente&lt;/h2&gt;
 &lt;p&gt;Abaixo alguns recursos da minha configuração.&lt;/p&gt;
-&lt;h5&gt;ATENÇÂO: O script foi desenvolvido e testado em Ubuntu e linux Mint&lt;/h5&gt;
+&lt;h3&gt;ATENÇÂO: O script foi desenvolvido e testado em Ubuntu e linux Mint&lt;/h3&gt;
 &lt;h2&gt;Isolamento de ambientes virtuais utilizando virtualenvwrapper&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="virtualenv" src="../images/virtualenv.png" title="Virtualenv" /&gt;
 &lt;img alt="ambiente isolado" src="../images/ambientes_isolados.png" title="Ambientes isolados" /&gt;&lt;/p&gt;
@@ -331,24 +330,24 @@ Com a necessidade de preparar um abiente para programação python e personaliza
 &lt;h3&gt;Comandos como push, pull, diff, status, etc, além do gutter que indica onde os arquivos foram modificados&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="git" src="../images/git.png" /&gt;
 &lt;img alt="gutter" src="../images/gutter.png" /&gt;&lt;/p&gt;
-&lt;h1&gt;REPL&lt;/h1&gt;
+&lt;h2&gt;REPL&lt;/h2&gt;
 &lt;h3&gt;Terminal interativo para python, bash e outros. Sem contar a opção de debug.&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="repl_python" src="../images/repl_python.png" /&gt;
 &lt;img alt="repl_shell" src="../images/repl_shell.png" /&gt;&lt;/p&gt;
-&lt;h1&gt;Emmet&lt;/h1&gt;
+&lt;h2&gt;Emmet&lt;/h2&gt;
 &lt;h3&gt;Facilitando algum front-end&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="emmet1" src="../images/emmet1.png" /&gt;
 &lt;img alt="emmet2" src="../images/emmet2.png" /&gt;
 &lt;img alt="emmet3" src="../images/emmet3.png" /&gt;
 &lt;img alt="emmet4" src="../images/emmet4.png" /&gt;&lt;/p&gt;
-&lt;h1&gt;E muito mais&lt;/h1&gt;
+&lt;h2&gt;E muito mais&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="docstring" src="../images/docstring.png" /&gt;
 &lt;img alt="highcolor" src="../images/highcolor.png" /&gt;
 &lt;img alt="markdown_editing" src="../images/markdown_editing.png" /&gt;
 &lt;img alt="preview_mark" src="../images/preview_mark.png" /&gt;
 &lt;img alt="requirements_txt" src="../images/requirements_txt.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Curtiu? Dê uma estrelinha pro projeto e faça seu fork e suas próprias configurações.&lt;/p&gt;</summary><category term="python"></category><category term="sublimetext"></category><category term="iniciantes"></category></entry><entry><title>Por que python 3?</title><link href="http://cassiobotaro.github.io/porque-python-3.html" rel="alternate"></link><updated>2015-03-10T03:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-03-10:porque-python-3.html</id><summary type="html">&lt;p&gt;&lt;img alt="logo-python" src="../images/logopython2.png" title="Logo Python" /&gt;&lt;/p&gt;
-&lt;h1&gt;Um pouco de história&lt;/h1&gt;
+&lt;h2&gt;Um pouco de história&lt;/h2&gt;
 &lt;p&gt;O python 3.0 foi uma decisão tomada em 2008, e decidiu-se assim por causa da incompatibilidade de alguns novos recursos com a versão 2.0 .
 É uma versão com novas baterias incluídas como asyncio, pip, enum, statistics, venv.
 Uma longa correção da nomeclatura de alguns módulos foi feita seguindo mais o padrão pythonico(pep-8).
@@ -538,7 +537,7 @@ python -m json.tool
 &lt;li&gt;&lt;a href="https://docs.python.org/2/library/2to3.html"&gt;2to3&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;E se tem duvida sobre suporte de alguma bilbioteca, confira &lt;a href="https://caniusepython3.com/"&gt;aqui&lt;/a&gt;. &lt;/p&gt;</summary><category term="python"></category><category term="python3"></category><category term="iniciantes"></category></entry><entry><title>Hello Python!</title><link href="http://cassiobotaro.github.io/hello-python.html" rel="alternate"></link><updated>2015-03-01T00:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-03-01:hello-python.html</id><summary type="html">&lt;p&gt;&lt;img alt="logo-python" src="../images/logopython2.png" title="Logo Python" /&gt;&lt;/p&gt;
-&lt;h1&gt;FAQ&lt;/h1&gt;
+&lt;h2&gt;FAQ&lt;/h2&gt;
 &lt;p&gt;Como algumas perguntas são recorrentes nas listas de discussões, nos grupos do facebook e outros meios de comunicação e nossa comunidade gosta de receber bem os iniciantes, responderei aqui aquelas dúvidas que são constantes.&lt;/p&gt;
 &lt;h2&gt;Python roda no (coloque aqui sua plataforma) ?&lt;/h2&gt;
 &lt;p&gt;Sim. Atualmente usuários linux, windows, MAC e de &lt;a href="https://www.python.org/download/other/"&gt;outras plataformas&lt;/a&gt;  podem programar nesta linguagem. O mesmo código pode ser rodado em diferentes plataformas, embora em &lt;em&gt;casos específicos&lt;/em&gt; não funcione. &lt;/p&gt;
