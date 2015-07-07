@@ -6,8 +6,6 @@ Slug: loop-infinito
 Author: Cássio Botaro  
 Summary: Entendendo o comportamento da linguagem, detectando um problema e apresentando a solução.
 
-#Loop Infinito
-
 ![loop](../images/infinite_loop.png
 "Loop infinito")
 

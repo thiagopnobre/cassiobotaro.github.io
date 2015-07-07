@@ -5,11 +5,12 @@ Tags: python, python3, iniciantes
 Slug: porque-python-3 
 Author: Cássio Botaro  
 Summary: Motivos para a utilização da versão 3.0 da linguagem Python.
+related_posts: hello-word
 
 ![logo-python](../images/logopython2.png 
 "Logo Python")
 
-#Um pouco de história
+##Um pouco de história
 
 O python 3.0 foi uma decisão tomada em 2008, e decidiu-se assim por causa da incompatibilidade de alguns novos recursos com a versão 2.0 .
 É uma versão com novas baterias incluídas como asyncio, pip, enum, statistics, venv.

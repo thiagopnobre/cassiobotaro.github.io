@@ -8,7 +8,7 @@ Summary: Resposta à perguntas frequntes de iniciantes na linguagem Python.
 
 ![logo-python](../images/logopython2.png 
 "Logo Python")
-#FAQ
+##FAQ
 
 Como algumas perguntas são recorrentes nas listas de discussões, nos grupos do facebook e outros meios de comunicação e nossa comunidade gosta de receber bem os iniciantes, responderei aqui aquelas dúvidas que são constantes.
 

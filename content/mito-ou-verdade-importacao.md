@@ -8,7 +8,7 @@ Summary: Importação dentro de função é uma otimização. Verdade ou mito?
 
 ![mythbusters](../images/MythBusters-Logo.jpg)
 
-# O problema
+## O problema
 Vamos supor que temos uma função em um determinado módulo que precisa de utilizar de recursos de outro módulo.
 
 Mas este outro modulo pode importar outros módulos que possivelmente não serão utilizados.

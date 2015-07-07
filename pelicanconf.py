@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- #
-
 AUTHOR = 'Cássio Botaro'
 SITENAME = 'import None'
 SITEURL = 'http://cassiobotaro.github.io'
@@ -27,8 +24,16 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 # Social widget
 SOCIAL = (
     (
+        'github',
+        'https://github.com/cassiobotaro'
+    ),
+    (
         'twitter',
         'http://twitter.com/cassiobotaro'
+    ),
+    (
+        'google-plus',
+        'https://plus.google.com/u/0/+C%C3%A1ssioBotaro'
     ),
     (
         'linkedin',
@@ -44,11 +49,14 @@ AVATAR = 'http://www.gravatar.com/avatar/'\
          'a19c2dcbc9fc6ae1c340528186320d9c?s=100'
 GOOGLE_ANALYTICS = 'UA-59964005-1'
 
-DEFAULT_PAGINATION = 10
+
+DEFAULT_PAGINATION = 7
+DISPLAY_TAGS_INLINE = True
 ADDTHIS_PROFILE = 'ra-54023148366c6bdd'
 GITHUB_SKIP_FORK = True
 GITHUB_SHOW_USER_LINK = True
-BOOTSTRAP_THEME = 'flatly'
-
+BOOTSTRAP_THEME = 'united'
+PYGMENTS_STYLE = 'monokai'
+DISPLAY_CATEGORY_IN_BREADCRUMBS = True
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
