@@ -89,9 +89,9 @@ Neste arquivo adicione o seguinte conteúdo:
 </html>
 ```
 
-Repare que este arquivo é um arquivo html comum, porém na Ttag H1 eu utilizo da linguagem de template do web2py para adicionar um recurso dinamicamente ao html.
+Repare que este arquivo é um arquivo html comum, porém na Tag H1 eu utilizo da linguagem de template do web2py para adicionar um recurso dinamicamente ao html.
 
-`{{}}` é a maneira da template do web2py reconhecer que ali código será executado antes de retornar uma resposta ao cliente. O igual indica que uma expressão deve ser avaliada, no caso do exemplo uma variável será adicionada.
+`{{}}` é a maneira da template do web2py reconhecer que aquele código será avaliado antes de retornar uma resposta ao cliente. O igual indica que uma expressão deve ser avaliada e o retorno será adicionado ao html, no caso do exemplo uma variável será adicionada.
 Como pode ser visto a variável nome que foi definida para o ambiente desta action(default/index) está disponível em minha template.
 
 Agora acesse http://localhost:8000/hello/default/index/cassio ou substitua cassio por algo que queira e veja o resultado.
