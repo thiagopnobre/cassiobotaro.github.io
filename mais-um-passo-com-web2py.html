@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Introdução ao web2py - import None</title>
+    <title>Mais um passo com web2py - import None</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -9,18 +9,18 @@
 
 
 
-<link rel="canonical" href="http://cassiobotaro.github.io/introducao-ao-web2py.html">
+<link rel="canonical" href="http://cassiobotaro.github.io/mais-um-passo-com-web2py.html">
 
         <meta name="author" content="Cássio Botaro" />
         <meta name="keywords" content="web2py,iniciantes" />
-        <meta name="description" content="Uma breve introdução prática ao framework web2py e uma lista de recursos interessantes." />
+        <meta name="description" content="Após escrever o hello world, é hora de dar mais alguns passos com web2py." />
 
         <meta property="og:site_name" content="import None" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Introdução ao web2py"/>
-        <meta property="og:url" content="http://cassiobotaro.github.io/introducao-ao-web2py.html"/>
-        <meta property="og:description" content="Uma breve introdução prática ao framework web2py e uma lista de recursos interessantes."/>
-        <meta property="article:published_time" content="2015-05-04" />
+        <meta property="og:title" content="Mais um passo com web2py"/>
+        <meta property="og:url" content="http://cassiobotaro.github.io/mais-um-passo-com-web2py.html"/>
+        <meta property="og:description" content="Após escrever o hello world, é hora de dar mais alguns passos com web2py."/>
+        <meta property="article:published_time" content="2015-07-07" />
             <meta property="article:section" content="web2py" />
             <meta property="article:tag" content="web2py" />
             <meta property="article:tag" content="iniciantes" />
@@ -84,10 +84,10 @@ import None            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="http://cassiobotaro.github.io/introducao-ao-web2py.html"
+                    <a href="http://cassiobotaro.github.io/mais-um-passo-com-web2py.html"
                        rel="bookmark"
-                       title="Permalink to Introdução ao web2py">
-                        Introdução ao web2py
+                       title="Permalink to Mais um passo com web2py">
+                        Mais um passo com web2py
                     </a>
                 </h1>
             </header>
@@ -97,7 +97,7 @@ import None            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-05-04T00:00:00-03:00"> Seg 04 maio 2015</time>
+        <i class="fa fa-calendar"></i><time datetime="2015-07-07T00:00:00-03:00"> Ter 07 julho 2015</time>
     </span>
 
 
@@ -112,78 +112,114 @@ import None            </a>
 </footer><!-- /.post-info -->                    </div>
                 </div>
                 <p><img alt="Web2py Logo" src="../images/web2py_logo.png" /></p>
-<h2>Sobre o web2py</h2>
-<p>Framework full-stack(ou seja assim como python vem com baterias incluídas), para desenvolvimento rápido, seguro, portável e orientado a banco de dados(o que não o limita).</p>
-<p>O download pode ser feito através da página <a href="http://www.web2py.com/download">http://www.web2py.com/</a> e quando este artigo foi escrito estava em sua versão 2.10.X.</p>
-<p>Embora possua versões para Windows e MAC eu recomendo sempre baixar a versão de código fonte.</p>
-<h2>Hello Web2py(Talk is cheap. Show me the code)</h2>
-<p>Iniciaremos criando uma aplicação mínima no web2py(sem utilizar sua interface ou um scaffolding).</p>
-<p>Navegue até o diretório applications do web2py, crie um diretório com o nome da sua aplicação(Eu chamerei o exemplo de hello).</p>
-<p>Dentro deste diretório inclua um diretório chamado controllers.</p>
-<p>Em seguida crie um arquivo chamado default.py no diretório controllers e digite o seguinte código.</p>
+<h2>Recapitulando</h2>
+<p>No <a href="http://cassiobotaro.github.io/introducao-ao-web2py.html">post</a> anterior dei uma introdução sobre o que é o web2py e iniciamos a construção de uma aplicação, porém não através de um scaffolding(uma aplicação base).</p>
+<p>Escrevemos um hello world personalizado onde o nome passado por argumento era retornado no corpo do retorno da nossa aplicação.</p>
+<p><img alt="print" src="../images/print_screen_hello.png" /></p>
+<h2>O próximo passo</h2>
+<p>Ainda sem uma aplicação bem definida decidi aboradar um pouco da criação de um modelo e sua aplicação.</p>
+<p>Este será então o nosso segundo hello world, criaremos um modelo, faremos sua exposição através da view e seu controle através de um controlador. Será dado uma pincelada como ter visões alternativas sobre o mesmo controlador.</p>
+<h2>Definindo o modelo</h2>
+<p>Crie um arquivo dentro do diretório models chamado db.py com o seguinte conteúdo:</p>
+<div class="highlight"><pre><span class="n">db</span> <span class="o">=</span> <span class="n">DAL</span><span class="p">(</span><span class="s">&#39;sqlite://storage.sqlite&#39;</span><span class="p">,</span> <span class="n">check_reserved</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;all&#39;</span><span class="p">])</span>
+
+<span class="n">db</span><span class="o">.</span><span class="n">define_table</span><span class="p">(</span>
+    <span class="s">&#39;marcas&#39;</span><span class="p">,</span>
+    <span class="n">Field</span><span class="p">(</span><span class="s">&#39;nome&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">db</span><span class="o">.</span><span class="n">define_table</span><span class="p">(</span>
+    <span class="s">&#39;carros&#39;</span><span class="p">,</span>
+    <span class="n">Field</span><span class="p">(</span><span class="s">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">notnull</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+    <span class="n">Field</span><span class="p">(</span><span class="s">&#39;ano&#39;</span><span class="p">,</span> <span class="n">notnull</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+    <span class="n">Field</span><span class="p">(</span><span class="s">&#39;marca&#39;</span><span class="p">,</span> <span class="s">&#39;reference marcas&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>Agora temos definidos dois modelos de nossa aplicação, lembrando que estes modelos serão aplicados à <a href="http://web2py.com/books/default/chapter/29/07/forms-and-validators#SQLFORM">visão</a> e a persistência de dados.</p>
+<p>O que acabamos de definir é que utilizaremos o sqlite como banco de dados, e neste banco de dados temos duas tabelas onde serão armazenados nossos dados.</p>
+<p>Em uma delas temos uma lista de marcas, e em outra uma lista de carros asosociados a estas marcas. todo carro deve possuir obrigatoriamente modelo, ano e marca.</p>
+<h2>Populando nossas tabelas</h2>
+<p>Ainda no arquivo db.py adicione as seguintes linhas:</p>
+<div class="highlight"><pre><span class="c"># verifica se a tabela de marcas está vazia</span>
+<span class="k">if</span> <span class="n">db</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">marcas</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">marcas</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">nome</span><span class="o">=</span><span class="s">&#39;Fiat&#39;</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">marcas</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">nome</span><span class="o">=</span><span class="s">&#39;Ford&#39;</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">marcas</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">nome</span><span class="o">=</span><span class="s">&#39;Chevrolet&#39;</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="c"># verifica se a tabela de carros está vazia</span>
+<span class="k">if</span> <span class="n">db</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">carros</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">carros</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">modelo</span><span class="o">=</span><span class="s">&#39;Idea&#39;</span><span class="p">,</span> <span class="n">marca</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ano</span><span class="o">=</span><span class="s">&#39;2003&#39;</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">carros</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">modelo</span><span class="o">=</span><span class="s">&#39;Ka&#39;</span><span class="p">,</span> <span class="n">marca</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ano</span><span class="o">=</span><span class="s">&#39;2004&#39;</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">carros</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">modelo</span><span class="o">=</span><span class="s">&#39;Celta&#39;</span><span class="p">,</span> <span class="n">marca</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ano</span><span class="o">=</span><span class="s">&#39;2005&#39;</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Temos 3 carros de 3 marcas distintas. Preste atenção no if que foi adicionado antes da inserção do carro, ele previne que a cada requisição carros repetidos sejam adicionados à tabela.</p>
+<p>Lembre-se tambem que essa maneira de povoar os dados é somente para desenvolvimento e teste e pode ser apagado após os registros serem adicionados ao banco de dados. Apagar estas linhas evita duas consultas desnecessárias ao banco de dados.</p>
+<h2>Controlando o que será exibido</h2>
+<p>Vamos voltar ao nosso controlador, o arquivo default.py(hello/controllers/default.py)</p>
+<p>Já vimos que o controlador recebe uma requisição, realiza processamento e retorna alguma resposta ao solicitante.
+Vamos então apagar o conteúdo de index e reescreve-lo agora consultando os carros existentes em meu banco de dados.</p>
+<p>O código será o seguinte:</p>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s">&#39;Hello World&#39;</span>
+    <span class="c"># pode ser traduzido como select * from carros</span>
+    <span class="c"># ou seja, todos os carros na tabela</span>
+    <span class="n">carros</span> <span class="o">=</span> <span class="n">db</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">carros</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
+    <span class="c"># dicionário que define as variáveis presentes no ambiente </span>
+    <span class="c"># durante renderização da template html</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;carros&#39;</span><span class="p">:</span> <span class="n">carros</span><span class="p">}</span>
 </pre></div>
 
 
-<p>Vá no diretório raiz do web2py, rode o arquivo web2py.py e pronto!
-Para acessar sua aplicação utilize a seguinte url: http://127.0.0.1:8000/hello</p>
-<p>Duas observações devem ser feitas neste ponto, caso navegue no diretório da sua aplicação vai notar que outros diretórios foram criados(nao se reocupe com eles por enquanto). Outra coisa é o nome do arquivo python(default) e a função(index). Isto é um padrão e pode ser modificado utilizando um arquivo de rotas.</p>
-<p>Todo o processo acima pode ser resumido da seguinte maneira(à partir da raiz do diretório web2py):</p>
-<div class="highlight"><pre>mkdir applications/hello <span class="c"># criação da aplicação</span>
-mkdir applications/hello/controllers <span class="c"># criação da pasta controllers</span>
-<span class="nb">echo</span> <span class="s2">&quot;def index():&quot;</span> &gt; applications/hello/controllers/default.py
-<span class="nb">echo</span> <span class="s2">&quot;    return &#39;Hello World&#39;&quot;</span> &gt;&gt; applications/hello/controllers/default.py
-</pre></div>
-
-
-<p><img alt="Web2py Word Cloud" src="../images/tag-cloud-web2py.png" /></p>
-<h2>Hello Author</h2>
-<p>Vamos tornar nosso primeiro aplicativo web mais interessante, vamos faze-lo passar a exibir um nome recebido como argumento em nossa url.</p>
-<p>Abra novamente o controlador default.py e agora adicione o seguinte código:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
-    <span class="n">nome</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;nome&#39;</span><span class="p">:</span> <span class="n">nome</span><span class="p">}</span>
-</pre></div>
-
-
-<p>O código agora foi alterado, para incialmente receber uma variável chamada nome que contém o valor do argumento 0.</p>
-<p>Argumento 0, wtf? </p>
-<p>Uma url pode ser decomposta assim no web2py:
-    http://host/application/controller/action/args1/args2...?var1=valor&amp;var2=valor</p>
-<div class="highlight"><pre>- host - Domínio ou subdominio da sua aplicação(Pode ser www.algo.com ou localmente localhost:8000 sendo 8000 porta padrão do servidor web2py)
-- application - nome da sua aplicação
-- controller - nome do controlador
-- action - nome da função presente no controlador
-- args - argumentos(como parâmetros)
-- vars - são como variáveis e sempre tem um nome e um valor
-</pre></div>
-
-
-<p>O retorno que anteriormente era um string, agora é um dicionário, este dicionário são as variáveis que estarão disponíveis na template para o contexto desta ação.</p>
-<p>Agora crie um diretório default na pasta views e em seguida adicione um arquivo chamado index.html dentro deste diretório.</p>
-<p>Neste arquivo adicione o seguinte conteúdo:</p>
+<p>Com essa alteração nossa visão também deve ser alterada. Para uma vizualização interessante vamos fazer uma tabela.
+Edite o arquivo index.html(hello/views/default/index.html)</p>
 <div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;pt-br&quot;</span><span class="nt">&gt;</span>
+
 <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;title&gt;</span>Hello<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Carros<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
+
 <span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;h1&gt;</span>Hello {{=nome}}<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;th&gt;</span>Modelo<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;th&gt;</span>Marca<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;th&gt;</span>Ano<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        {{for carro in carros:}}
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td&gt;</span>{{=carro.modelo}}<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>{{=carro.marca.nome}}<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>{{=carro.ano}}<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        {{pass}}
+    <span class="nt">&lt;/table&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </pre></div>
 
 
-<p>Repare que este arquivo é um arquivo html comum, porém na Tag H1 eu utilizo da linguagem de template do web2py para adicionar um recurso dinamicamente ao html.</p>
-<p><code>{{}}</code> é a maneira da template do web2py reconhecer que aquele código será avaliado antes de retornar uma resposta ao cliente. O igual indica que uma expressão deve ser avaliada e o retorno será adicionado ao html, no caso do exemplo uma variável será adicionada.
-Como pode ser visto a variável nome que foi definida para o ambiente desta action(default/index) está disponível em minha template.</p>
-<p>Agora acesse http://localhost:8000/hello/default/index/cassio ou substitua cassio por algo que queira e veja o resultado.</p>
-<h2>Considerações finais</h2>
-<p>Este foi o primeiro post sobre web2py do meu blog, quis ser breve. Se ficou perdido em algum detalhe, não se preocupe, deixe um comentário que adorarei lhe ajudar.</p>
-<p>E já adiantando, teremos continuação para este post, demonstrando diversos recursos do framework e também dscutindo sobre suas "mágicas".</p>
-<p>Gostou? Compatilhe!</p>
+<p>Um único detalhe que chamo atenção neste codigo é <code>{{carro.modelo.nome}}</code>, como as tabelas possuem relação o web2py irá ficar responsável por  buscar o nome do modelo de cada carro.
+Visualize através da url: <a href="http://localhost:8000/hello/default/index.json">http://localhost:8000/hello/default/index.json</a></p>
+<h2>Exibindo os mesmos dados de forma diferente</h2>
+<p>Já que temos uma resposta html, o quão será difícil retornar um json
+com estes mesmos dados para uma possível comunicação entre sistemas ou at´e mesmo para consumo de um aplicativo móvel?</p>
+<p>Na verdade é extremamente simples. Apenas crie no mesmo diretório onde se encontra a view index.html um arquivo index.json com o seguinte conteúdo.</p>
+<div class="highlight"><pre>{{from gluon.serializers import json}}{{=XML(json(response._vars))}}
+</pre></div>
+
+
+<p>Para consultar visite a url: <a href="http://localhost:8000/hello/default/index.json">http://localhost:8000/hello/default/index.json</a></p>
+<h2>Em breve tem mais...</h2>
+<p>Ficou curioso sobre o esquema de templates do web2py?, mais detalhes sobre os modelos? Ainda um pouco perdido? Não se preocupe.
+Pretendo em breve escreves posts mais detalhados sobre cada aspecto do web2py como modelo, visão, controlador, modulos e também tratar brechas que até agora foram deixadas.</p>
+<p>Curtiu? Compartilhe!</p>
 <p>[ ]'s</p>
             </div>
             <!-- /.entry-content -->
@@ -204,8 +240,8 @@ Como pode ser visto a variável nome que foi definida para o ambiente desta acti
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'importnone'; // required: replace example with your forum shortname
 
-                    var disqus_identifier = 'introducao-ao-web2py';
-                var disqus_url = 'http://cassiobotaro.github.io/introducao-ao-web2py.html';
+                    var disqus_identifier = 'mais-um-passo-com-web2py';
+                var disqus_url = 'http://cassiobotaro.github.io/mais-um-passo-com-web2py.html';
 
             var disqus_config = function () {
                 this.language = "pt";

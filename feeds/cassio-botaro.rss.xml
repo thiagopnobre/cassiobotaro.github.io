@@ -1,5 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>import None</title><link>http://cassiobotaro.github.io/</link><description></description><atom:link href="http://cassiobotaro.github.io/feeds/cassio-botaro.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 27 Jun 2015 18:00:00 -0300</lastBuildDate><item><title>Loop Infinito</title><link>http://cassiobotaro.github.io/loop-infinito.html</link><description>&lt;p&gt;&lt;img alt="loop" src="../images/infinite_loop.png" title="Loop infinito" /&gt;&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>import None</title><link>http://cassiobotaro.github.io/</link><description></description><atom:link href="http://cassiobotaro.github.io/feeds/cassio-botaro.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 07 Jul 2015 00:00:00 -0300</lastBuildDate><item><title>Mais um passo com web2py</title><link>http://cassiobotaro.github.io/mais-um-passo-com-web2py.html</link><description>&lt;p&gt;&lt;img alt="Web2py Logo" src="../images/web2py_logo.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;Recapitulando&lt;/h2&gt;
+&lt;p&gt;No &lt;a href="http://cassiobotaro.github.io/introducao-ao-web2py.html"&gt;post&lt;/a&gt; anterior dei uma introdução sobre o que é o web2py e iniciamos a construção de uma aplicação, porém não através de um scaffolding(uma aplicação base).&lt;/p&gt;
+&lt;p&gt;Escrevemos um hello world personalizado onde o nome passado por argumento era retornado no corpo do retorno da nossa aplicação.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="print" src="../images/print_screen_hello.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;O próximo passo&lt;/h2&gt;
+&lt;p&gt;Ainda sem uma aplicação bem definida decidi aboradar um pouco da criação de um modelo e sua aplicação.&lt;/p&gt;
+&lt;p&gt;Este será então o nosso segundo hello world, criaremos um modelo, faremos sua exposição através da view e seu controle através de um controlador. Será dado uma pincelada como ter visões alternativas sobre o mesmo controlador.&lt;/p&gt;
+&lt;h2&gt;Definindo o modelo&lt;/h2&gt;
+&lt;p&gt;Crie um arquivo dentro do diretório models chamado db.py com o seguinte conteúdo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DAL&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;sqlite://storage.sqlite&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;check_reserved&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;all&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;define_table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;marcas&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;Field&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;define_table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;carros&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;Field&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;modelo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;notnull&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;Field&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;ano&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;notnull&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;Field&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;marca&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;reference marcas&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora temos definidos dois modelos de nossa aplicação, lembrando que estes modelos serão aplicados à &lt;a href="http://web2py.com/books/default/chapter/29/07/forms-and-validators#SQLFORM"&gt;visão&lt;/a&gt; e a persistência de dados.&lt;/p&gt;
+&lt;p&gt;O que acabamos de definir é que utilizaremos o sqlite como banco de dados, e neste banco de dados temos duas tabelas onde serão armazenados nossos dados.&lt;/p&gt;
+&lt;p&gt;Em uma delas temos uma lista de marcas, e em outra uma lista de carros asosociados a estas marcas. todo carro deve possuir obrigatoriamente modelo, ano e marca.&lt;/p&gt;
+&lt;h2&gt;Populando nossas tabelas&lt;/h2&gt;
+&lt;p&gt;Ainda no arquivo db.py adicione as seguintes linhas:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# verifica se a tabela de marcas está vazia&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;marcas&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;marcas&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Fiat&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;marcas&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Ford&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;marcas&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nome&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Chevrolet&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;commit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c"&gt;# verifica se a tabela de carros está vazia&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;carros&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;carros&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;modelo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Idea&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;marca&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ano&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;2003&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;carros&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;modelo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Ka&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;marca&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ano&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;2004&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;carros&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;modelo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Celta&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;marca&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ano&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;2005&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;commit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Temos 3 carros de 3 marcas distintas. Preste atenção no if que foi adicionado antes da inserção do carro, ele previne que a cada requisição carros repetidos sejam adicionados à tabela.&lt;/p&gt;
+&lt;p&gt;Lembre-se tambem que essa maneira de povoar os dados é somente para desenvolvimento e teste e pode ser apagado após os registros serem adicionados ao banco de dados. Apagar estas linhas evita duas consultas desnecessárias ao banco de dados.&lt;/p&gt;
+&lt;h2&gt;Controlando o que será exibido&lt;/h2&gt;
+&lt;p&gt;Vamos voltar ao nosso controlador, o arquivo default.py(hello/controllers/default.py)&lt;/p&gt;
+&lt;p&gt;Já vimos que o controlador recebe uma requisição, realiza processamento e retorna alguma resposta ao solicitante.
+Vamos então apagar o conteúdo de index e reescreve-lo agora consultando os carros existentes em meu banco de dados.&lt;/p&gt;
+&lt;p&gt;O código será o seguinte:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c"&gt;# pode ser traduzido como select * from carros&lt;/span&gt;
+    &lt;span class="c"&gt;# ou seja, todos os carros na tabela&lt;/span&gt;
+    &lt;span class="n"&gt;carros&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;carros&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="c"&gt;# dicionário que define as variáveis presentes no ambiente &lt;/span&gt;
+    &lt;span class="c"&gt;# durante renderização da template html&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;carros&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;carros&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Com essa alteração nossa visão também deve ser alterada. Para uma vizualização interessante vamos fazer uma tabela.
+Edite o arquivo index.html(hello/views/default/index.html)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;html&lt;/span&gt; &lt;span class="na"&gt;lang=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;pt-br&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;charset=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;UTF-8&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Carros&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;table&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;table&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;th&amp;gt;&lt;/span&gt;Modelo&lt;span class="nt"&gt;&amp;lt;/th&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;th&amp;gt;&lt;/span&gt;Marca&lt;span class="nt"&gt;&amp;lt;/th&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;th&amp;gt;&lt;/span&gt;Ano&lt;span class="nt"&gt;&amp;lt;/th&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+        {{for carro in carros:}}
+        &lt;span class="nt"&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;{{=carro.modelo}}&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;{{=carro.marca.nome}}&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;{{=carro.ano}}&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+        {{pass}}
+    &lt;span class="nt"&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Um único detalhe que chamo atenção neste codigo é &lt;code&gt;{{carro.modelo.nome}}&lt;/code&gt;, como as tabelas possuem relação o web2py irá ficar responsável por  buscar o nome do modelo de cada carro.
+Visualize através da url: &lt;a href="http://localhost:8000/hello/default/index.json"&gt;http://localhost:8000/hello/default/index.json&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Exibindo os mesmos dados de forma diferente&lt;/h2&gt;
+&lt;p&gt;Já que temos uma resposta html, o quão será difícil retornar um json
+com estes mesmos dados para uma possível comunicação entre sistemas ou at´e mesmo para consumo de um aplicativo móvel?&lt;/p&gt;
+&lt;p&gt;Na verdade é extremamente simples. Apenas crie no mesmo diretório onde se encontra a view index.html um arquivo index.json com o seguinte conteúdo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;{{from gluon.serializers import json}}{{=XML(json(response._vars))}}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para consultar visite a url: &lt;a href="http://localhost:8000/hello/default/index.json"&gt;http://localhost:8000/hello/default/index.json&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Em breve tem mais...&lt;/h2&gt;
+&lt;p&gt;Ficou curioso sobre o esquema de templates do web2py?, mais detalhes sobre os modelos? Ainda um pouco perdido? Não se preocupe.
+Pretendo em breve escreves posts mais detalhados sobre cada aspecto do web2py como modelo, visão, controlador, modulos e também tratar brechas que até agora foram deixadas.&lt;/p&gt;
+&lt;p&gt;Curtiu? Compartilhe!&lt;/p&gt;
+&lt;p&gt;[ ]'s&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Cássio Botaro</dc:creator><pubDate>Tue, 07 Jul 2015 00:00:00 -0300</pubDate><guid>tag:cassiobotaro.github.io,2015-07-07:mais-um-passo-com-web2py.html</guid><category>web2py</category><category>iniciantes</category></item><item><title>Loop Infinito</title><link>http://cassiobotaro.github.io/loop-infinito.html</link><description>&lt;p&gt;&lt;img alt="loop" src="../images/infinite_loop.png" title="Loop infinito" /&gt;&lt;/p&gt;
 &lt;h2&gt;O problema&lt;/h2&gt;
 &lt;p&gt;Vamos começar analisando o seguinte código:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Exemplo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -235,8 +344,8 @@ mkdir applications/hello/controllers &lt;span class="c"&gt;# criação da pasta 
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Repare que este arquivo é um arquivo html comum, porém na Ttag H1 eu utilizo da linguagem de template do web2py para adicionar um recurso dinamicamente ao html.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;{{}}&lt;/code&gt; é a maneira da template do web2py reconhecer que ali código será executado antes de retornar uma resposta ao cliente. O igual indica que uma expressão deve ser avaliada, no caso do exemplo uma variável será adicionada.
+&lt;p&gt;Repare que este arquivo é um arquivo html comum, porém na Tag H1 eu utilizo da linguagem de template do web2py para adicionar um recurso dinamicamente ao html.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;{{}}&lt;/code&gt; é a maneira da template do web2py reconhecer que aquele código será avaliado antes de retornar uma resposta ao cliente. O igual indica que uma expressão deve ser avaliada e o retorno será adicionado ao html, no caso do exemplo uma variável será adicionada.
 Como pode ser visto a variável nome que foi definida para o ambiente desta action(default/index) está disponível em minha template.&lt;/p&gt;
 &lt;p&gt;Agora acesse http://localhost:8000/hello/default/index/cassio ou substitua cassio por algo que queira e veja o resultado.&lt;/p&gt;
 &lt;h2&gt;Considerações finais&lt;/h2&gt;
