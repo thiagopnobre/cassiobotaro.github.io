@@ -121,7 +121,7 @@ import None            </a>
 <p>Este será então o nosso segundo hello world, criaremos um modelo, faremos sua exposição através da view e seu controle através de um controlador. Será dado uma pincelada como ter visões alternativas sobre o mesmo controlador.</p>
 <h2>Definindo o modelo</h2>
 <p>Crie um arquivo dentro do diretório models chamado db.py com o seguinte conteúdo:</p>
-<div class="highlight"><pre><span class="n">db</span> <span class="o">=</span> <span class="n">DAL</span><span class="p">(</span><span class="s">&#39;sqlite://storage.sqlite&#39;</span><span class="p">,</span> <span class="n">check_reserved</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;all&#39;</span><span class="p">])</span>
+<div class="highlight"><pre><span class="n">db</span> <span class="o">=</span> <span class="n">DAL</span><span class="p">(</span><span class="s">&#39;sqlite://storage.sqlite&#39;</span><span class="p">)</span>
 
 <span class="n">db</span><span class="o">.</span><span class="n">define_table</span><span class="p">(</span>
     <span class="s">&#39;marcas&#39;</span><span class="p">,</span>
@@ -205,7 +205,7 @@ Edite o arquivo index.html(hello/views/default/index.html)</p>
 </pre></div>
 
 
-<p>Um único detalhe que chamo atenção neste codigo é <code>{{carro.modelo.nome}}</code>, como as tabelas possuem relação o web2py irá ficar responsável por  buscar o nome do modelo de cada carro.
+<p>Um único detalhe que chamo atenção neste codigo é <code>{{=carro.marca.nome}}</code>, como as tabelas possuem relação o web2py irá ficar responsável por  buscar o nome do modelo de cada carro.
 Visualize através da url: <a href="http://localhost:8000/hello/default/index.json">http://localhost:8000/hello/default/index.json</a></p>
 <h2>Exibindo os mesmos dados de forma diferente</h2>
 <p>Já que temos uma resposta html, o quão será difícil retornar um json

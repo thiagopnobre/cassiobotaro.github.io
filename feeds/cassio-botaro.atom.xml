@@ -9,7 +9,7 @@
 &lt;p&gt;Este será então o nosso segundo hello world, criaremos um modelo, faremos sua exposição através da view e seu controle através de um controlador. Será dado uma pincelada como ter visões alternativas sobre o mesmo controlador.&lt;/p&gt;
 &lt;h2&gt;Definindo o modelo&lt;/h2&gt;
 &lt;p&gt;Crie um arquivo dentro do diretório models chamado db.py com o seguinte conteúdo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DAL&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;sqlite://storage.sqlite&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;check_reserved&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;all&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DAL&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;sqlite://storage.sqlite&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;define_table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="s"&gt;&amp;#39;marcas&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -93,7 +93,7 @@ Edite o arquivo index.html(hello/views/default/index.html)&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Um único detalhe que chamo atenção neste codigo é &lt;code&gt;{{carro.modelo.nome}}&lt;/code&gt;, como as tabelas possuem relação o web2py irá ficar responsável por  buscar o nome do modelo de cada carro.
+&lt;p&gt;Um único detalhe que chamo atenção neste codigo é &lt;code&gt;{{=carro.marca.nome}}&lt;/code&gt;, como as tabelas possuem relação o web2py irá ficar responsável por  buscar o nome do modelo de cada carro.
 Visualize através da url: &lt;a href="http://localhost:8000/hello/default/index.json"&gt;http://localhost:8000/hello/default/index.json&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Exibindo os mesmos dados de forma diferente&lt;/h2&gt;
 &lt;p&gt;Já que temos uma resposta html, o quão será difícil retornar um json
