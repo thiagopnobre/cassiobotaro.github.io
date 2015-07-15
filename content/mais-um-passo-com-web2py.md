@@ -26,7 +26,7 @@ Este será então o nosso segundo hello world, criaremos um modelo, faremos sua 
 ## Definindo o modelo
 Crie um arquivo dentro do diretório models chamado db.py com o seguinte conteúdo:
 ```python
-db = DAL('sqlite://storage.sqlite', check_reserved=['all'])
+db = DAL('sqlite://storage.sqlite')
 
 db.define_table(
     'marcas',
@@ -121,7 +121,7 @@ Edite o arquivo index.html(hello/views/default/index.html)
 
 ```
 
-Um único detalhe que chamo atenção neste codigo é `{{carro.modelo.nome}}`, como as tabelas possuem relação o web2py irá ficar responsável por  buscar o nome do modelo de cada carro.
+Um único detalhe que chamo atenção neste codigo é `{{=carro.marca.nome}}`, como as tabelas possuem relação o web2py irá ficar responsável por  buscar o nome do modelo de cada carro.
 Visualize através da url: [http://localhost:8000/hello/default/index.json](http://localhost:8000/hello/default/index.json)
 
 ## Exibindo os mesmos dados de forma diferente
