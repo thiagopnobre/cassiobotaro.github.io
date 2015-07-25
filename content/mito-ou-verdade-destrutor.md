@@ -164,9 +164,12 @@ import gc
 print(gc.get_threshold())
 ```
 
+Um importante detalhe, este artigo foi escrito em python 3.4. Antes disso o coletor de lixo mantinha os objetos contendo ciclos, classificando-os como *não coletáveis*, estes vazamentos de memória são colocados em `gc.garbage` e necessitam ser tratados manualmente.
+
 ## Conclusão
 
 Como vimos há uma certa complexidade envolvida em uma instrução del, e dado isso não podemos garantir que o comando del realmente desaloque o espaço de memória naquele instante.
+
 
 Logo, Mito foi derrubado!
 
