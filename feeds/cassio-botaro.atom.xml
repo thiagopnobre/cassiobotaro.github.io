@@ -134,6 +134,7 @@ Em python é o método dunder del &lt;code&gt;__del__&lt;/code&gt;.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;Um importante detalhe, este artigo foi escrito em python 3.4. Antes disso o coletor de lixo mantinha os objetos contendo ciclos, classificando-os como &lt;em&gt;não coletáveis&lt;/em&gt;, estes vazamentos de memória são colocados em &lt;code&gt;gc.garbage&lt;/code&gt; e necessitam ser tratados manualmente.&lt;/p&gt;
 &lt;h2&gt;Conclusão&lt;/h2&gt;
 &lt;p&gt;Como vimos há uma certa complexidade envolvida em uma instrução del, e dado isso não podemos garantir que o comando del realmente desaloque o espaço de memória naquele instante.&lt;/p&gt;
 &lt;p&gt;Logo, Mito foi derrubado!&lt;/p&gt;
