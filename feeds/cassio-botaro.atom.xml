@@ -1,5 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>import None</title><link href="http://cassiobotaro.github.io/" rel="alternate"></link><link href="http://cassiobotaro.github.io/feeds/cassio-botaro.atom.xml" rel="self"></link><id>http://cassiobotaro.github.io/</id><updated>2015-07-07T00:00:00-03:00</updated><entry><title>Mais um passo com web2py</title><link href="http://cassiobotaro.github.io/mais-um-passo-com-web2py.html" rel="alternate"></link><updated>2015-07-07T00:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-07-07:mais-um-passo-com-web2py.html</id><summary type="html">&lt;p&gt;&lt;img alt="Web2py Logo" src="../images/web2py_logo.png" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>import None</title><link href="http://cassiobotaro.github.io/" rel="alternate"></link><link href="http://cassiobotaro.github.io/feeds/cassio-botaro.atom.xml" rel="self"></link><id>http://cassiobotaro.github.io/</id><updated>2015-07-25T14:00:00-03:00</updated><entry><title>Mito ou Verdade: Destrutor</title><link href="http://cassiobotaro.github.io/mito-ou-verdade-destrutor.html" rel="alternate"></link><updated>2015-07-25T14:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-07-25:mito-ou-verdade-destrutor.html</id><summary type="html">&lt;p&gt;&lt;img alt="mythbusters" src="../images/MythBusters-Logo.jpg" /&gt;&lt;/p&gt;
+&lt;h2&gt;O problema&lt;/h2&gt;
+&lt;p&gt;Linguagens de programação mais antigas traziam a capacidade de manipulação da memória. A competência de reservar um espaço de memória pra determinada operação e sua posterior liberação era do desenvolvedor.&lt;/p&gt;
+&lt;p&gt;Python desde o seu início possui um mecanismo simples de alocação e desalocação, é o mecanismo de contador de refêrencia.&lt;/p&gt;
+&lt;p&gt;Sempre que um novo objeto é referenciado(alguém passa apontar para aquele objeto), o contador é incrementado e quando deixa de apontar, este contador é decreementado. Chegando a 0 este contador aquele espaço de memória está livre.&lt;/p&gt;
+&lt;p&gt;Até aqui tudo certo, isto quer então que quando realizo &lt;code&gt;del &amp;lt;objeto&amp;gt;&lt;/code&gt;, meu objeto é desalocado?&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;lista = []
+lista.append(lista)
+del lista
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Aparentemente tudo ok, mas tenho péssimas notícias para lhe dar, o rótulo lista pode até não estar mais referenciando aquele espaço de memória, porém aquele espaço de memória ainda continua ocupado.&lt;/p&gt;
+&lt;h2&gt;Discussão sobre o problema&lt;/h2&gt;
+&lt;p&gt;Vamos uma demonstração que mostra que aquele objeto ainda estava na memória.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;gc&lt;/span&gt;
+&lt;span class="c"&gt;# Primeiro definiramos que o nível de debug do &lt;/span&gt;
+&lt;span class="c"&gt;# coletor de lixo é DEBUG_LEAK para&lt;/span&gt;
+&lt;span class="c"&gt;# poder ver os objetos coletados pelo coletor&lt;/span&gt;
+&lt;span class="n"&gt;gc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DEBUG_LEAK&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# vamos definir uma lista e verificar qual o seu endereço de memória &lt;/span&gt;
+&lt;span class="n"&gt;lista&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;hex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;span class="c"&gt;# repetimos o código anterior &lt;/span&gt;
+&lt;span class="c"&gt;# adicionando lista a ela mesmo&lt;/span&gt;
+&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# apaga a lista&lt;/span&gt;
+&lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;
+&lt;span class="n"&gt;gc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;collect&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="c"&gt;# Repare que um dos elementos coletados foi a &lt;/span&gt;
+&lt;span class="c"&gt;# lista que achamos já ter sido removida&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora que já foi provado, vamos entender melhor como funciona o coletor de lixo do Python.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;gc&lt;/span&gt;
+&lt;span class="c"&gt;# Definiramos que o nível de debug do &lt;/span&gt;
+&lt;span class="c"&gt;# coletor de lixo é DEBUG_LEAK para&lt;/span&gt;
+&lt;span class="c"&gt;# poder ver os objetos coletados pelo coletor&lt;/span&gt;
+&lt;span class="n"&gt;gc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DEBUG_LEAK&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# Primeira coisa a saber é que nem todos os objetos provocam o&lt;/span&gt;
+&lt;span class="c"&gt;# comportamento visto acima&lt;/span&gt;
+&lt;span class="n"&gt;variavel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;span class="c"&gt;# obs: Tudo em Python é objeto&lt;/span&gt;
+&lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="n"&gt;variavel&lt;/span&gt;
+&lt;span class="n"&gt;gc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;colect&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="c"&gt;# não foi coletado pelo coletor como a lista&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O que acontece é que nem todos os objetos em Python precisam ser monitorados, pois possuem atomicidade em sua construção.
+A maneira de verificar se um objeto está sendo monitorado é a seguinte:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;gc&lt;/span&gt;
+&lt;span class="n"&gt;gc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DEBUG_LEAK&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;variavel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;span class="n"&gt;lista&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_tracked&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;variavel&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="c"&gt;# False&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_tracked&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="c"&gt;# True&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Como dito a atomicidade de certos objetos o previnem da geração de ciclos, porém outros podem gerar ciclos e isto faz com que o número de referencias nunca caia a 0.&lt;/p&gt;
+&lt;h2&gt;Entendendo o &lt;code&gt;del&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Relembrando, Python tem um sistema de contador de referências, e quando não há mais referências a um objeto seu espaço de memória é desalocado.&lt;/p&gt;
+&lt;p&gt;Mas porque isso não ocorreu quando eu fiz a lista referenciar a si proprio?&lt;/p&gt;
+&lt;p&gt;A instrução &lt;code&gt;del&lt;/code&gt; não pede a desalocação da memória, apenas faz com o contador de referências seja decrementado e associação do rótulo com o espaço de memória desfeita.&lt;/p&gt;
+&lt;h2&gt;Mais exemplos pois ísto não ocorre somente em listas&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;gc&lt;/span&gt; 
+&lt;span class="n"&gt;gc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DEBUG_LEAK&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Exemplo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ref&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;alguma_referencia&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ref&lt;/span&gt;
+
+&lt;span class="n"&gt;ref1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Exemplo&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;ref2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Exemplo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ref1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ref1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;alguma_referencia&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ref2&lt;/span&gt;
+&lt;span class="c"&gt;# repare que aqui temos um ciclo, ou seja, objetos se referenciam mutualmente&lt;/span&gt;
+&lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="n"&gt;ref1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ref2&lt;/span&gt;
+&lt;span class="c"&gt;# os rótulos ref1 e ref2 não se referem mais a nada&lt;/span&gt;
+&lt;span class="c"&gt;# o contador de referências é decrementado&lt;/span&gt;
+&lt;span class="c"&gt;# mas o espaço de memória ainda não foi desalocado&lt;/span&gt;
+&lt;span class="c"&gt;# perceba que cada objeto ainda possui uma referência&lt;/span&gt;
+&lt;span class="n"&gt;gc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;collect&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="c"&gt;# gc: collectable &amp;lt;Example 0x7f0f59646780&amp;gt;&lt;/span&gt;
+&lt;span class="c"&gt;# gc: collectable &amp;lt;Example 0x7f0f59646b38&amp;gt;&lt;/span&gt;
+&lt;span class="c"&gt;# Podemos ver que agora há a desalocação do objeto&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Mas e sobre o destrutor?&lt;/h2&gt;
+&lt;p&gt;O destrutor, ou finalizador é um método chamado quando um objeto está para ser desalocado. 
+Em python é o método dunder del &lt;code&gt;__del__&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;gc&lt;/span&gt; 
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Exemplo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ref&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;alguma_referencia&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ref&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__del__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Poderia estar fazendo algo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;ref1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Exemplo&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="n"&gt;ref1&lt;/span&gt;
+&lt;span class="c"&gt;# deve aparecer em tela &amp;quot;Poderia estar fazendo algo&amp;quot;&lt;/span&gt;
+&lt;span class="c"&gt;# Mas e se ocorrer um cilo?&lt;/span&gt;
+
+&lt;span class="n"&gt;ref1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Exemplo&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;ref2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Exemplo&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;ref1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;alguma_referencia&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ref2&lt;/span&gt;
+&lt;span class="n"&gt;ref2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;alguma_referencia&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ref1&lt;/span&gt;
+
+&lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="n"&gt;ref1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ref2&lt;/span&gt;
+&lt;span class="c"&gt;# sim! O finalizador ainda não foi chamado, pois por causa do ciclo&lt;/span&gt;
+&lt;span class="c"&gt;# ainda não finalizado&lt;/span&gt;
+&lt;span class="n"&gt;gc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;collect&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="c"&gt;# agora sim o finalizador é invocado&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Últimas considerações&lt;/h2&gt;
+&lt;p&gt;O coletor de lixo é automático, aqui foi utilizado de forma manual somente para efeito explicativo. E como saber quando ele ocorre?&lt;/p&gt;
+&lt;p&gt;O python monitora cada alocação e desalocação que ocorre, e quando a diferença de alocações e desalocações atinge um limite, o coletor de lixo é chamado.&lt;/p&gt;
+&lt;p&gt;Este limite por padrão é de 700.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;gc&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_threshold&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+&lt;p&gt;Como vimos há uma certa complexidade envolvida em uma instrução del, e dado isso não podemos garantir que o comando del realmente desaloque o espaço de memória naquele instante.&lt;/p&gt;
+&lt;p&gt;Logo, Mito foi derrubado!&lt;/p&gt;
+&lt;p&gt;&lt;img alt="busted" src="../images/busted.jpg" /&gt;&lt;/p&gt;</summary><category term="python"></category><category term="mito"></category><category term="verdade"></category></entry><entry><title>Mais um passo com web2py</title><link href="http://cassiobotaro.github.io/mais-um-passo-com-web2py.html" rel="alternate"></link><updated>2015-07-07T00:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-07-07:mais-um-passo-com-web2py.html</id><summary type="html">&lt;p&gt;&lt;img alt="Web2py Logo" src="../images/web2py_logo.png" /&gt;&lt;/p&gt;
 &lt;h2&gt;Recapitulando&lt;/h2&gt;
 &lt;p&gt;No &lt;a href="http://cassiobotaro.github.io/introducao-ao-web2py.html"&gt;post&lt;/a&gt; anterior dei uma introdução sobre o que é o web2py e iniciamos a construção de uma aplicação, porém não através de um scaffolding(uma aplicação base).&lt;/p&gt;
 &lt;p&gt;Escrevemos um hello world personalizado onde o nome passado por argumento era retornado no corpo do retorno da nossa aplicação.&lt;/p&gt;
