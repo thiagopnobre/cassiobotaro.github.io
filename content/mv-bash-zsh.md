@@ -4,19 +4,19 @@ Category: Linux
 Tags: linux, dotfiles, iniciantes 
 Slug: mv-bash-zsh  
 Author: Cássio Botaro  
-Summary: Why i change from bash to zsh and how i made my new config.
+Summary: Why I changed from bash to zsh and how I made my new config.
 
 ![logo-zsh](../images/oh-my-zsh-logo.png "Logo zsh")
 
 ##Motivation
 
-A while ago, when i speak at Santa Rita in Inatel, my notebook doesn't work at the projector. Then i have to use a friend's Mac with zsh. I love what i see and decided some day give a chance to that shell. 
+A while ago, when I spoke at Santa Rita in Inatel, my laptop doesn't work with the projector. Then I had to use a friend's Mac with zsh. I love what I saw and decided that some day I'd give a chance to that shell.
 
 Two months later i wrote my own .bashrc with some shortcuts to improve my productivity.
 
 The result was [https://github.com/cassiobotaro/dot_files](https://github.com/cassiobotaro/dot_files).
 
-Then, yesterday, i do a fresh xubuntu install and finally give a chance to zsh, and i in love.
+Then, yesterday, I did a fresh xubuntu install and finally gave a chance to zsh, and I in love.
 
 
 ##Disclaimer
@@ -27,11 +27,11 @@ If you have a question, look the references at the end of post.
 
 ##Step by step
 
-First i install zsh. As i say, xubuntu is my distro, then i only have to write:
+First install zsh. As I said, xubuntu is my distro, then I only have to write:
 ```bash
 >>> sudo apt-get install zsh
 ```
-As pre requisite git necessary, please install typing:
+As pre requisite git is needed, please install typing:
 ```bash
 >>> sudo apt-get install git
 ```
@@ -79,7 +79,7 @@ One more thing is necessary, change my default shell.
 >>> chsh -s $(which zsh)
 ```
 
-Logoff and now zsh is your new default.
+Logoff and then logon, now zsh is your new default.
 
 ##Repositories
 
