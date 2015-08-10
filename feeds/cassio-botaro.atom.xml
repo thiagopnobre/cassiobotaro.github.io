@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>import None</title><link href="http://cassiobotaro.github.io/" rel="alternate"></link><link href="http://cassiobotaro.github.io/feeds/cassio-botaro.atom.xml" rel="self"></link><id>http://cassiobotaro.github.io/</id><updated>2015-08-09T01:00:00-03:00</updated><entry><title>mv /bin/bash /bin/zsh</title><link href="http://cassiobotaro.github.io/mv-bash-zsh.html" rel="alternate"></link><updated>2015-08-09T01:00:00-03:00</updated><author><name>Cássio Botaro</name></author><id>tag:cassiobotaro.github.io,2015-08-09:mv-bash-zsh.html</id><summary type="html">&lt;p&gt;&lt;img alt="logo-zsh" src="../images/oh-my-zsh-logo.png" title="Logo zsh" /&gt;&lt;/p&gt;
 &lt;h2&gt;Motivation&lt;/h2&gt;
-&lt;p&gt;A while ago, when i speak at Santa Rita in Inatel, my notebook doesn't work at the projector. Then i have to use a friend's Mac with zsh. I love what i see and decided some day give a chance to that shell. &lt;/p&gt;
+&lt;p&gt;A while ago, when I spoke at Santa Rita in Inatel, my laptop doesn't work with the projector. Then I had to use a friend's Mac with zsh. I love what I saw and decided that some day I'd give a chance to that shell.&lt;/p&gt;
 &lt;p&gt;Two months later i wrote my own .bashrc with some shortcuts to improve my productivity.&lt;/p&gt;
 &lt;p&gt;The result was &lt;a href="https://github.com/cassiobotaro/dot_files"&gt;https://github.com/cassiobotaro/dot_files&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Then, yesterday, i do a fresh xubuntu install and finally give a chance to zsh, and i in love.&lt;/p&gt;
+&lt;p&gt;Then, yesterday, I did a fresh xubuntu install and finally gave a chance to zsh, and I in love.&lt;/p&gt;
 &lt;h2&gt;Disclaimer&lt;/h2&gt;
 &lt;p&gt;Works on Ubuntu with any interface, and works too in all *unix system, only changing the instalation commands.&lt;/p&gt;
 &lt;p&gt;If you have a question, look the references at the end of post. &lt;/p&gt;
 &lt;h2&gt;Step by step&lt;/h2&gt;
-&lt;p&gt;First i install zsh. As i say, xubuntu is my distro, then i only have to write:&lt;/p&gt;
+&lt;p&gt;First install zsh. As I said, xubuntu is my distro, then I only have to write:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; sudo apt-get install zsh
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;As pre requisite git necessary, please install typing:&lt;/p&gt;
+&lt;p&gt;As pre requisite git is needed, please install typing:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; sudo apt-get install git
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -55,7 +55,7 @@ plugins=(git python extract django virtualenvwrapper ubuntu vagrant)
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Logoff and now zsh is your new default.&lt;/p&gt;
+&lt;p&gt;Logoff and then logon, now zsh is your new default.&lt;/p&gt;
 &lt;h2&gt;Repositories&lt;/h2&gt;
 &lt;p&gt;More information here:&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/robbyrussell/oh-my-zsh"&gt;Oh-my-zsh&lt;/a&gt;&lt;/p&gt;
